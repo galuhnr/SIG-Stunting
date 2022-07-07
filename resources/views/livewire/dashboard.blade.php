@@ -29,6 +29,7 @@
   });
 
   var api = 'http://127.0.0.1:8000/api/cluster2017';
+  
   //data api yang diambil
   var dataRisiko=[];
   
@@ -36,6 +37,21 @@
   var geojson=[];
   
   getData();
+
+  function getColor(kluster){
+    color="#3f48cc";
+     
+    if(kluster==1){
+      color="#00ff00";
+    }
+    else if(kluster==2){
+      color="#ffff00";
+    }
+    else if(kluster==3){
+      color="#ff0000";
+    }
+    return color;
+  }
 
   
     // atur style

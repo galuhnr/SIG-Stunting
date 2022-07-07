@@ -23,7 +23,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         {{ __('Nama Informasi') }}
                                     </th>
-                                    <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >
+                                    <th width="30% !important" class="text-left text-overflow text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" >
                                         {{ __('Isi Informasi') }}
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">

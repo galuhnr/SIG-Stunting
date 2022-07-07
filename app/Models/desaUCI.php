@@ -12,7 +12,7 @@ class desaUCI extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = "desaUCI";
+    protected $table = "desa_uci";
     protected $primaryKey = 'id_desa';
     protected $fillable = [
         'kabkota_id',

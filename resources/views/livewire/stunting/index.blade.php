@@ -59,7 +59,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $dt->jml_balita_stunting }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ round(($dt->jml_balita_stunting / $dt->jml_balita_diukur)*100 , 1) }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $dt->persentase }}</p>
                                         </td>
                                         <td class="text-center">
                                             <a href="#" wire:click="edit({{ $dt->id_stunting }})" class="mx-3" data-bs-toggle="tooltip"

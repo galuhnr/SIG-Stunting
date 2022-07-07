@@ -15,7 +15,6 @@ cur = conn.cursor()
 
 #perintah sql
 cur.execute("SELECT (CAST(jml_balita_sehat AS FLOAT) / CAST(jml_balita AS FLOAT))*100 as persentase_pelayanan FROM pelayanan_kesehatan WHERE tahun_id=1 order by kabkota_id asc;")
-
 dt_pelayanan = np.array(cur.fetchall())
 arr_pelayanan = np.round( [float(i) for i in dt_pelayanan], 1)
 
@@ -49,25 +48,21 @@ for i in range(len(arr_pelayanan)):
   deff = tipping.output['risiko']
   datas.append(deff)
 
-#print(datas)
+hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
 
-hasil = pd.DataFrame({'pelayanan_kesehatan(%)': arr_pelayanan,'sanitasi_jamban(%)': arr_sanitasi,'desa_imunisasi(%)': arr_desa,'asi_eksklusif(%)':arr_asi,'stunting(%)':arr_stunting,'defuzzification':datas})
 for ind, row in hasil.iterrows():
-    hasil.loc[hasil['defuzzification'] < 2 , 'tingkat_risiko'] = 'Rendah' 
-    hasil.loc[(hasil['defuzzification'] >= 2) & (hasil['defuzzification'] < 3) , 'tingkat_risiko'] = 'Sedang' 
-    hasil.loc[hasil['defuzzification'] >= 3 , 'tingkat_risiko'] = 'Tinggi' 
+  hasil.loc[hasil['defuzzification'] < 2 , 'tingkat_risiko'] = 'Rendah' 
+  hasil.loc[(hasil['defuzzification'] >= 2) & (hasil['defuzzification'] < 3) , 'tingkat_risiko'] = 'Sedang' 
+  hasil.loc[hasil['defuzzification'] >= 3 , 'tingkat_risiko'] = 'Tinggi' 
 
 cur.execute("SELECT  tb_tahun.tahun , kabupaten_kota.id_kab, kabupaten_kota.nama_kabkota from tb_tahun, kabupaten_kota where tb_tahun.id_tahun = 1 order by kabupaten_kota.id_kab asc;")
 datakab = cur.fetchall()
 kab_tahun = pd.DataFrame(datakab, columns=["tahun","id_kab","nama_kabkota"])
 
-print(hasil)
 data_new = pd.concat([kab_tahun,hasil], axis=1)
 
-#print(data_new)
-
-#json = data_new.to_json(orient='records')
-#print(json)
+json = data_new.to_json(orient='records')
+print(json)
 
 cur.close()
 conn.close()

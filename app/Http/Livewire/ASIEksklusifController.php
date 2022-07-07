@@ -13,10 +13,10 @@ class ASIEksklusifController extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
-    public $paging;
+    protected $paging;
 
-    public $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
-    public $updateMode = false;
+    protected $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
+    protected $updateMode = false;
 
     public function mount()
     {
