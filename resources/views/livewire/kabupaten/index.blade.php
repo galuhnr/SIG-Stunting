@@ -35,7 +35,7 @@
                                 @foreach ($data as $dt)
                                     <tr>
                                         <td class="ps-4">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $dt->id_kab }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $data->firstItem() + $loop->index }}</p>
                                         </td>
                                         <td class="text-left">
                                             <p class="text-xs font-weight-bold mb-0">{{ $dt->nama_kabkota }}</p>

@@ -51,6 +51,14 @@
                         </div>
                         @error('jml_balita_stunting') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="persentase">{{ __('Persentase Jumlah Balita Stunting (Pendek)') }}</label>
+                        <div class="@error('persentase')border border-danger rounded-3 @enderror">
+                            <input wire:model="persentase" id="persentase" type="number" class="form-control"
+                                placeholder="Isi persentase">
+                        </div>
+                        @error('persentase') <div class="text-danger">{{ $message }}</div> @enderror
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

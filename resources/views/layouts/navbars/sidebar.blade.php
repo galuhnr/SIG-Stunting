@@ -8,7 +8,7 @@
             <span class="ms-1 font-weight-bold">Website Admin</span>
         </a>
     </div>
-    <hr class="horizontal dark mt-0">
+    <hr class="horizontal dark m-0">
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item mt-0">
@@ -85,14 +85,19 @@
             <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Hasil Tingkat Risiko</h6>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'fuzzy' ? 'active' : '' }}"
-                    href="{{ route('fuzzy') }}">
-                       <i style="font-size: 1rem;" class="fa-solid fa-calendar-days text-center
-                        {{ in_array(request()->route()->getName(),['fuzzy']) ? 'text-danger' : 'text-dark' }}"></i>
-                    <span class="nav-link-text ms-1">Tahun</span>
-                </a>
-            </li>
+            <div class="dropdown" >
+                <li class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i style="font-size: 1rem;" class="fa-solid fa-calendar-days text-center text-dark"></i>
+                    <span class="nav-link-text ms-1">Pilih Tahun</span>
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2017')}}">2017</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2018')}}">2018</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2019')}}">2019</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2020')}}">2020</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2021')}}">2021</a></li>
+                </ul>
+            </div>
 
             <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Informasi Lainnya</h6>
@@ -103,6 +108,14 @@
                       <i style="font-size: 1rem;" class="fa-solid fa-city text-center
                         {{ in_array(request()->route()->getName(),['kabupaten-kota']) ? 'text-danger' : 'text-dark' }}"></i>
                     <span class="nav-link-text ms-1">Kabupaten/Kota</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Route::currentRouteName() == 'tahun' ? 'active' : '' }}"
+                    href="{{ route('tahun') }}">
+                      <i style="font-size: 1rem;" class="fa-solid fa-layer-group text-center
+                        {{ in_array(request()->route()->getName(),['tahun']) ? 'text-danger' : 'text-dark' }}"></i>
+                    <span class="nav-link-text ms-1">Tahun</span>
                 </a>
             </li>
             <li class="nav-item">

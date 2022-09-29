@@ -16,6 +16,7 @@ class Stunting extends Model
         'kabkota_id',
         'jml_balita_diukur',
         'jml_balita_stunting',
+        'persentase'
     ];
 
     public function tb_tahun() {

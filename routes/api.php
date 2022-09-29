@@ -18,4 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/cluster2017', 'App\Http\Livewire\FuzzyController@result1')->name('cluster2017');
+Route::get('/stunting2017', 'App\Http\Livewire\PetaApiController@result1')->name('stunting2017');
+Route::get('/stunting2018', 'App\Http\Livewire\PetaApiController@result2')->name('stunting2018');
+Route::get('/stunting2019', 'App\Http\Livewire\PetaApiController@result3')->name('stunting2019');
+Route::get('/stunting2020', 'App\Http\Livewire\PetaApiController@result4')->name('stunting2020');
+Route::get('/stunting2021', 'App\Http\Livewire\PetaApiController@result5')->name('stunting2021');

@@ -20,8 +20,9 @@
                     <div class="mb-3">
                         <label for="isi_info">{{ __('Isi Informasi') }}</label>
                         <div class="@error('isi_info')border border-danger rounded-3 @enderror">
-                            <input wire:model="isi_info" id="isi_info" type="text" class="form-control"
+                            <textarea wire:model="isi_info" id="isi_info" type="text" class="form-control"
                                 placeholder="Isi Informasi" aria-label="Isi Info" aria-describedby="info-addon">
+                            </textarea>
                         </div>
                         @error('isi_info') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>

@@ -36,12 +36,12 @@
                         @error('nama_kabkota') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="jml_desaUCI">{{ __('Jumlah Desa UCI (Universal Child Immunization)') }}</label>
-                        <div class="@error('jml_desaUCI')border border-danger rounded-3 @enderror">
-                            <input wire:model="jml_desaUCI" id="jml_desaUCI" type="number" class="form-control"
+                        <label for="jml_desa_uci">{{ __('Jumlah Desa UCI (Universal Child Immunization)') }}</label>
+                        <div class="@error('jml_desa_uci')border border-danger rounded-3 @enderror">
+                            <input wire:model="jml_desa_uci" id="jml_desa_uci" type="number" class="form-control"
                                 placeholder="Isi jumlah desa uci" aria-label="Jumlah Desa UCI" aria-describedby="jmldesauci-addon">
                         </div>
-                        @error('jml_desaUCI') <div class="text-danger">{{ $message }}</div> @enderror
+                        @error('jml_desa_uci') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
                 </form>
             </div>

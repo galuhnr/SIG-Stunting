@@ -11,12 +11,12 @@ use App\Models\ASIEksklusif;
 class ASIEksklusifController extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
-    protected $listeners = ['delete'];
-    protected $paging;
+    public $paginationTheme = 'bootstrap';
+    public $listeners = ['delete'];
+    public $paging;
 
-    protected $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
-    protected $updateMode = false;
+    public $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
+    public $updateMode = false;
 
     public function mount()
     {

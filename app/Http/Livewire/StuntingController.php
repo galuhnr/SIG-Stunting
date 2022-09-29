@@ -11,11 +11,11 @@ use App\Models\Stunting;
 class StuntingController extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
-    protected $listeners = ['delete'];
+    public $paginationTheme = 'bootstrap';
+    public $listeners = ['delete'];
     public $paging;
 
-    public $stunting_id, $tahun_id, $kabkota_id, $jml_balita_diukur, $jml_balita_stunting;
+    public $stunting_id, $tahun_id, $kabkota_id, $jml_balita_diukur, $jml_balita_stunting, $persentase;
     public $updateMode = false;
 
     public function mount()
@@ -36,6 +36,7 @@ class StuntingController extends Component
         $this->kabkota_id = '';
         $this->jml_balita_diukur = '';
         $this->jml_balita_stunting = '';
+        $this->persentase = '';
     }
 
     public function create()
@@ -58,6 +59,7 @@ class StuntingController extends Component
             'kabkota_id' => $this->kabkota_id,
             'jml_balita_diukur' => $this->jml_balita_diukur,
             'jml_balita_stunting' => $this->jml_balita_stunting,
+            'persentase' => $this->persentase
         ]);
 
         $this->resetInputFields();
@@ -78,7 +80,7 @@ class StuntingController extends Component
         $this->kabkota_id = $data->kabkota_id;
         $this->jml_balita_diukur = $data->jml_balita_diukur;
         $this->jml_balita_stunting = $data->jml_balita_stunting;
-
+        $this->persentase = $data->persentase;
     }
 
     public function update()
@@ -96,6 +98,7 @@ class StuntingController extends Component
                 'kabkota_id' => $this->kabkota_id,
                 'jml_balita_diukur' => $this->jml_balita_diukur,
                 'jml_balita_stunting' => $this->jml_balita_stunting,
+                'persentase' => $this->persentase,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();

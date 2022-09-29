@@ -56,10 +56,10 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $dt->kabupaten_kota->jml_desa }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $dt->jml_desaUCI }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $dt->jml_desa_uci }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0" id="persen" name="persen">{{ round(($dt->jml_desaUCI / $dt->kabupaten_kota->jml_desa)*100 , 1) }}</p>
+                                            <p class="text-xs font-weight-bold mb-0" id="persen" name="persen">{{ round(($dt->jml_desa_uci / $dt->kabupaten_kota->jml_desa)*100 , 1) }}</p>
                                         </td>
                                         <td class="text-center">
                                             <a href="#" wire:click="edit({{ $dt->id_desa }})" class="mx-3" data-bs-toggle="tooltip"

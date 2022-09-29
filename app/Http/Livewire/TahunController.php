@@ -27,11 +27,11 @@ class TahunController extends Component
     public function render()
     {
 
-        $kabupaten = Tahun::orderBy('id_tahun', 'asc')->paginate($this->paging);
-        $kab = [
-            'data' => $kabupaten
+        $tahun = Tahun::orderBy('id_tahun', 'asc')->paginate($this->paging);
+        $thn = [
+            'data' => $tahun
         ];
-        return view('livewire.tahun.index', $kab);
+        return view('livewire.tahun.index', $thn);
     }
 
     private function resetInputFields(){
@@ -58,9 +58,9 @@ class TahunController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $kabkota = Tahun::where('id_tahun', $id)->first();
+        $thn = Tahun::where('id_tahun', $id)->first();
         $this->tahun_id = $id;
-        $this->tahun = $kabkota->tahun;
+        $this->tahun = $thn->tahun;
         // dd($kabkota);
     }
 
@@ -70,12 +70,17 @@ class TahunController extends Component
             'tahun' => 'required',
         ]);
         if ($this->tahun_id) {
-            $kabkota = Tahun::find($this->tahun_id);
-            $kabkota->update([
+            $thn = Tahun::find($this->tahun_id);
+            $thn->update([
                 'tahun' => $this->tahun,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
+            $this->dispatchBrowserEvent('swal:modal', [
+                'type' => 'success',
+                'title' => 'Data berhasil diperbarui',
+                'text' => '',
+            ]);
         }
     }
 

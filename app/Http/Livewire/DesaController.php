@@ -18,7 +18,7 @@ class DesaController extends Component
 
     public $paging;
 
-    public $desa_id, $kabkota_id, $tahun_id, $jml_desaUCI;
+    public $desa_id, $kabkota_id, $tahun_id, $jml_desa_uci;
     public $updateMode = false;
 
     public function mount()
@@ -37,7 +37,7 @@ class DesaController extends Component
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_desaUCI = '';
+        $this->jml_desa_uci = '';
     }
 
     public function create()
@@ -51,13 +51,13 @@ class DesaController extends Component
         $this->validate([
             'kabkota_id' => 'required',
             'tahun_id' => 'required',
-            'jml_desaUCI' => 'required',
+            'jml_desa_uci' => 'required',
         ]);
         
         desaUCI::create([
             'kabkota_id' => $this->kabkota_id,
             'tahun_id' => $this->tahun_id,
-            'jml_desaUCI' => $this->jml_desaUCI,
+            'jml_desa_uci' => $this->jml_desa_uci,
         ]);
 
         $this->resetInputFields();
@@ -76,7 +76,7 @@ class DesaController extends Component
         $this->desa_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_desaUCI = $data->jml_desaUCI;
+        $this->jml_desa_uci = $data->jml_desa_uci;
     }
 
     public function update()
@@ -84,14 +84,14 @@ class DesaController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_desaUCI' => 'required',
+            'jml_desa_uci' => 'required',
         ]);
         if ($this->desa_id) {
             $desa = desaUCI::find($this->desa_id);
             $desa->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_desaUCI' => $this->jml_desaUCI,
+                'jml_desa_uci' => $this->jml_desa_uci,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
