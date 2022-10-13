@@ -56,4 +56,22 @@ class PetaApiController extends Component
         $result = json_encode($fuzz);
         echo $result;
     }
+
+    public function result6()
+    {
+        $fuzz = DB::table('hasil_risiko')
+                        ->select()
+                        ->get();
+        $result = json_encode($fuzz);
+        echo $result;
+    }
+
+    public function result7()
+    {
+        $fuzz = DB::table('prediksi_risiko')
+                        ->select()
+                        ->get();
+        $result = json_encode($fuzz);
+        echo $result;
+    }
 }

@@ -5,7 +5,7 @@ use App\Models\User;
 
 use Livewire\Component;
 
-class UserProfile extends Component
+class UserProfilee extends Component
 {
     public User $user;
     public $showSuccesNotification  = false;

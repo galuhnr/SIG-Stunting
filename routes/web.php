@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Livewire\WebsiteUser\LandingPage;
+
 use App\Http\Livewire\Auth\ForgotPassword;
 use App\Http\Livewire\Auth\ResetPassword;
 use App\Http\Livewire\Auth\SignUp;
 use App\Http\Livewire\Auth\Login;
 use App\Http\Livewire\Dashboard;
-use App\Http\Livewire\Profile;
 use App\Http\Livewire\KabupatenController;
 use App\Http\Livewire\TahunController;
 use App\Http\Livewire\DesaController;
@@ -16,6 +17,8 @@ use App\Http\Livewire\SanitasiJambanController;
 use App\Http\Livewire\ASIEksklusifController;
 use App\Http\Livewire\StuntingController;
 use App\Http\Livewire\InfoStuntingController;
+use App\Http\Livewire\GrafikController;
+use App\Http\Livewire\GrafikControllerCoba;
 
 use App\Http\Livewire\Peta\PetaController17;
 use App\Http\Livewire\Peta\PetaController18;
@@ -23,13 +26,16 @@ use App\Http\Livewire\Peta\PetaController19;
 use App\Http\Livewire\Peta\PetaController20;
 use App\Http\Livewire\Peta\PetaController21;
 
+use App\Http\Livewire\PrediksiController;
+
 use App\Http\Livewire\TingkatRisiko\TRController17;
 use App\Http\Livewire\TingkatRisiko\TRController18;
 use App\Http\Livewire\TingkatRisiko\TRController19;
 use App\Http\Livewire\TingkatRisiko\TRController20;
 use App\Http\Livewire\TingkatRisiko\TRController21;
 
-use App\Http\Livewire\LaravelExamples\UserProfile;
+use App\Http\Livewire\UserProfile;
+use App\Http\Livewire\LaravelExamples\UserProfilee;
 use App\Http\Livewire\LaravelExamples\UserManagement;
 
 /*
@@ -45,7 +51,7 @@ use App\Http\Livewire\LaravelExamples\UserManagement;
 
 Route::get('/', Login::class)->name('login');
 
-
+Route::get('/web-user', LandingPage::class)->name('web-user');
 
 Route::get('/sign-up', SignUp::class)->name('sign-up');
 Route::get('/login', Login::class)->name('login');
@@ -59,10 +65,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/peta2019', PetaController19::class)->name('peta2019');
     Route::get('/peta2020', PetaController20::class)->name('peta2020');
     Route::get('/peta2021', PetaController21::class)->name('peta2021');
+    
+    Route::get('/peta-prediksi', PrediksiController::class)->name('peta-prediksi');
 
     Route::get('/kabupaten-kota', KabupatenController::class)->name('kabupaten-kota');
     
-    Route::get('/grafik', Dashboard::class)->name('grafik');
+    Route::get('/grafik-data', GrafikController::class)->name('grafik-data');
+    Route::get('/grafik-coba', GrafikControllerCoba::class)->name('grafik-coba');
     
     Route::get('/tingkat-risiko2017', TRController17::class)->name('tingkat-risiko2017');
     Route::get('/tingkat-risiko2018', TRController18::class)->name('tingkat-risiko2018');
@@ -75,11 +84,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/stunting', StuntingController::class)->name('stunting');
     Route::get('/cakupan-desa-UCI', DesaController::class)->name('desaUCI');
     Route::get('/fasilitas-jamban-sehat', SanitasiJambanController::class)->name('jamban-sehat');
+
+    Route::get('/user-profile', UserProfile::class)->name('user-profile');
    
-    Route::get('/laravel-user-profile', UserProfile::class)->name('user-profile');
+    Route::get('/laravel-user-profilee', UserProfilee::class)->name('user-profilee');
     Route::get('/laravel-user-management', UserManagement::class)->name('user-management');
 
-    Route::get('/fasilitas-kesehatan', Profile::class)->name('faskes');
+    Route::get('/fasilitas-kesehatan', UserProfile::class)->name('faskes');
     Route::get('/tahun', TahunController::class)->name('tahun');
     Route::get('/informasi-stunting', InfoStuntingController::class)->name('info');
 });

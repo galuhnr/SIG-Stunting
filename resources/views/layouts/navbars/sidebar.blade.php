@@ -22,18 +22,18 @@
                 </a>
             </li>
             <li class="nav-item mt-0">
-                <a class="nav-link {{ Route::currentRouteName() == 'grafik' ? 'active' : '' }}"
-                    href="{{ route('grafik') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'peta-prediksi' ? 'active' : '' }}"
+                    href="{{ route('peta-prediksi') }}">
                      <i style="font-size: 1rem;" class="fa-solid fa-earth-americas text-center
-                        {{ in_array(request()->route()->getName(),['grafik']) ? 'text-danger' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['peta-prediksi']) ? 'text-danger' : 'text-dark' }}"></i>
                     <span class="nav-link-text ms-1">Peta Prediksi</span>
                 </a>
             </li>
             <li class="nav-item mt-0">
-                <a class="nav-link {{ Route::currentRouteName() == 'grafik' ? 'active' : '' }}"
-                    href="{{ route('grafik') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'grafik-data' ? 'active' : '' }}"
+                    href="{{ route('grafik-data') }}">
                       <i style="font-size: 1rem;" class="fa-solid fa-chart-column text-center
-                        {{ in_array(request()->route()->getName(),['grafik']) ? 'text-danger' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['grafik-data']) ? 'text-danger' : 'text-dark' }}"></i>
                     <span class="nav-link-text ms-1">Grafik Data</span>
                 </a>
             </li>

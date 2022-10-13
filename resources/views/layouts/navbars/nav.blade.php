@@ -19,8 +19,10 @@
                     </div>
                 </div>
                 <ul class="navbar-nav justify-content-end">
-                    <li class="nav-item px-3 d-flex align-items-center">
-                        <i class="fa fa-cog"></i>
+                    <li class="nav-item p-2 d-flex align-items-center">
+                        <a class="nav-link" href="{{ route('user-profile') }}">
+                            <i class="fa fa-cog"></i>
+                        </a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">

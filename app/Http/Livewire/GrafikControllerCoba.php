@@ -4,10 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Dashboard extends Component
+class GrafikControllerCoba extends Component
 {
     public function render()
     {
-        return view('livewire.peta.peta2021');
+        return view('livewire.grafik-coba');
     }
 }

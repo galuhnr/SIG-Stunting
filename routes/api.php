@@ -23,3 +23,5 @@ Route::get('/stunting2018', 'App\Http\Livewire\PetaApiController@result2')->name
 Route::get('/stunting2019', 'App\Http\Livewire\PetaApiController@result3')->name('stunting2019');
 Route::get('/stunting2020', 'App\Http\Livewire\PetaApiController@result4')->name('stunting2020');
 Route::get('/stunting2021', 'App\Http\Livewire\PetaApiController@result5')->name('stunting2021');
+Route::get('/tingkat-risiko', 'App\Http\Livewire\PetaApiController@result6')->name('tingkat-risiko');
+Route::get('/prediksi2022', 'App\Http\Livewire\PetaApiController@result7')->name('prediksi2022');
