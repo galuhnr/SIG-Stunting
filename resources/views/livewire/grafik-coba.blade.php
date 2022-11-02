@@ -76,19 +76,19 @@ $.ajax({
 
             series: [{
                 name: 'Pelayanan Kesehatan',
-                data: [pela]
+                data: [25178,23152,24571,22669,24405]
             }, {
                 name: 'Sanitasi Layak',
-                data: []
+                data: [403354,414573,180847,196489,196822]
             }, {
                 name: 'ASI Eksklusif',
-                data: []
+                data: [3808,3599,1138,2051,5474]
             }, {
                 name: 'Kasus Stunting',
-                data: []
+                data: [21.1,26.3,15.3,16.6,14.5]
             }, {
                 name: 'Desa UCI',
-                data: []
+                data: [152,171,125,115,111]
             }],
 
             responsive: {

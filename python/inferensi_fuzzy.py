@@ -4,30 +4,30 @@ from skfuzzy import control as ctrl
 import numpy as np
 
 #INPUTAN
-pelayanan = ctrl.Antecedent(np.arange(50,100),'pelayanan')
-pelayanan['rendah'] = fuzz.trapmf(pelayanan.universe, [50,50,86,91])
-pelayanan['sedang'] = fuzz.trimf(pelayanan.universe, [86,91,97])
-pelayanan['tinggi'] = fuzz.trapmf(pelayanan.universe, [91,97,100,100])
+pelayanan = ctrl.Antecedent(np.arange(35,107,1),'pelayanan')
+pelayanan['rendah'] = fuzz.trapmf(pelayanan.universe, [35,35,83,91])
+pelayanan['sedang'] = fuzz.trimf(pelayanan.universe, [83,91,99])
+pelayanan['tinggi'] = fuzz.trapmf(pelayanan.universe, [91,99,106,106])
 
-sanitasi = ctrl.Antecedent(np.arange(25,100),'sanitasi')
+sanitasi = ctrl.Antecedent(np.arange(25,101,1),'sanitasi')
 sanitasi['rendah'] = fuzz.trapmf(sanitasi.universe, [25,25,91,95])
 sanitasi['sedang'] = fuzz.trimf(sanitasi.universe, [91,95,99])
 sanitasi['tinggi'] = fuzz.trapmf(sanitasi.universe, [95,99,100,100])
 
-desa = ctrl.Antecedent(np.arange(40,100),'desa')
-desa['rendah'] = fuzz.trapmf(desa.universe, [40,40,88,93])
+desa = ctrl.Antecedent(np.arange(26,101,1),'desa')
+desa['rendah'] = fuzz.trapmf(desa.universe, [26,26,88,93])
 desa['sedang'] = fuzz.trimf(desa.universe, [88,93,98])
 desa['tinggi'] = fuzz.trapmf(desa.universe, [93,98,100,100])
 
-asi = ctrl.Antecedent(np.arange(40,100),'asi')
-asi['rendah'] = fuzz.trapmf(asi.universe, [40,40,68,78])
+asi = ctrl.Antecedent(np.arange(13,97,1),'asi')
+asi['rendah'] = fuzz.trapmf(asi.universe, [13,13,68,78])
 asi['sedang'] = fuzz.trimf(asi.universe, [68,78,88])
-asi['tinggi'] = fuzz.trapmf(asi.universe, [78,88,100,100])
+asi['tinggi'] = fuzz.trapmf(asi.universe, [78,88,96,96])
 
-stunting = ctrl.Antecedent(np.arange(5,50),'stunting')
+stunting = ctrl.Antecedent(np.arange(5,48,1),'stunting')
 stunting['rendah'] = fuzz.trapmf(stunting.universe, [5,5,8,14])
 stunting['sedang'] = fuzz.trimf(stunting.universe, [8,14,20])
-stunting['tinggi'] = fuzz.trapmf(stunting.universe, [14,20,50,50])
+stunting['tinggi'] = fuzz.trapmf(stunting.universe, [14,20,47,47])
 
 # pelayanan.view()
 # sanitasi.view()
@@ -42,7 +42,6 @@ risiko['sedang'] = fuzz.trimf(risiko.universe, [1,2,3])
 risiko['tinggi'] = fuzz.trimf(risiko.universe, [2,3,4])
 
 #risiko.view()
-
 
 #rule
 rule1 = ctrl.Rule(pelayanan['rendah'] & sanitasi['rendah'] & desa['rendah'] & asi['rendah'] & stunting['rendah'], risiko['tinggi'])

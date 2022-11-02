@@ -15,11 +15,11 @@ class CreatePrediksisTable extends Migration
     {
         Schema::create('prediksi_risiko', function (Blueprint $table) {
             $table->id('id_prediksi');
-            $table->integer('tahun_id')->unsigned()->after('id_hasil');
-            $table->foreign('tahun_id','fk_tahun_hasil_id')->references('id_tahun')->on('tb_tahun')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->integer('tahun_id')->unsigned()->after('id_prediksi');
+            $table->foreign('tahun_id','fk_tahun_prediksi_id')->references('id_tahun')->on('tb_tahun')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->integer('kabkota_id')->unsigned()->after('id_hasil');
-            $table->foreign('kabkota_id','fk_kabkota_hasil_id')->references('id_kab')->on('kabupaten_kota')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->integer('defuzzifikasi');
+            $table->foreign('kabkota_id','fk_kabkota_prediksi_id')->references('id_kab')->on('kabupaten_kota')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->float('defuzzifikasi');
             $table->string('tingkat_risiko');
         });
     }
@@ -31,6 +31,6 @@ class CreatePrediksisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prediksi_risiko');
+        Schema::dropIfExists('prediksis');
     }
 }

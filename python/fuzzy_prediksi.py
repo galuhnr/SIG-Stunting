@@ -34,9 +34,9 @@ for ind, row in hasil.iterrows():
     hasil.loc[(hasil['defuzzification'] >= 1.5) & (hasil['defuzzification'] < 2.5) , 'tingkat_risiko'] = 'Sedang' 
     hasil.loc[hasil['defuzzification'] >= 2.5 , 'tingkat_risiko'] = 'Tinggi' 
 
-cur.execute("SELECT id_kab from kabupaten_kota order by id_kab asc;")
+cur.execute("SELECT kabupaten_kota.id_kab, tb_tahun.id_tahun from kabupaten_kota, tb_tahun  where tb_tahun.id_tahun = 4 order by id_kab asc;")
 datakab = cur.fetchall()
-df_kab = pd.DataFrame(datakab, columns=["id_kab"])
+df_kab = pd.DataFrame(datakab, columns=["tahun_id", "kabkota_id"])
 
 #untuk id ditabel hasil
 df_id = pd.DataFrame()
@@ -46,10 +46,11 @@ data_new = pd.concat([df_id,df_kab,hasil], axis=1)
 
 data_sql=data_new.to_numpy()
 
+#print(data_sql)
 def bulkInsert(records):
     try:
-        sql_insert_query = """ INSERT INTO prediksi_risiko (id_prediksi, kabkota_id, defuzzifikasi, tingkat_risiko) 
-                           VALUES (%s,%s,%s,%s) """
+        sql_insert_query = """ INSERT INTO prediksi (id_prediksi, tahun_id, kabkota_id, defuzzifikasi, tingkat_risiko) 
+                           VALUES (%s,%s,%s,%s,%s) """
 
         # executemany() to insert multiple rows
         result = cur.executemany(sql_insert_query, records)
@@ -57,7 +58,7 @@ def bulkInsert(records):
         print(cur.rowcount, "Record inserted successfully into prediksi table")
 
     except (Exception, psycopg2.Error) as error:
-        print("Failed inserting record into hasil table {}".format(error))
+        print("Failed inserting record into prediksi table {}".format(error))
 
     finally:
         # closing database connection.

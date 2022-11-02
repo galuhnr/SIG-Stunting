@@ -46,7 +46,7 @@ df_pelayanan.loc[:,"SMA_2021"] = np.round(((df_pelayanan.loc[:,'tahun2018'] + df
 df_pelayanan.loc[:,"SMA_2022"] = np.round(((df_pelayanan.loc[:,'tahun2019'] + df_pelayanan.loc[:,'tahun2020'] +df_pelayanan.loc[:,'tahun2021'])/3),1)
 
 #simpan di array untuk proses fuzzy
-arr_pelayanan = df_pelayanan['SMA_2022'].to_numpy()
+arr_pelayanan = df_pelayanan['SMA_2020'].to_numpy()
 
 #FAKTOR SANITASI LAYAK ATAU JAMBAN SEHAT
 cur.execute("SELECT kabkota_id, tahun_id, (CAST(jml_akses_jamban AS FLOAT) / CAST(jml_kk AS FLOAT))*100 as persentase_sanitasi FROM sanitasi_jamban order by tahun_id, kabkota_id asc;")
@@ -76,7 +76,7 @@ df_sanitasi.loc[:,"SMA_2021"] = np.round(((df_sanitasi.loc[:,'tahun2018'] + df_s
 df_sanitasi.loc[:,"SMA_2022"] = np.round(((df_sanitasi.loc[:,'tahun2019'] + df_sanitasi.loc[:,'tahun2020'] +df_sanitasi.loc[:,'tahun2021'])/3),1)
 
 #simpan di array untuk proses fuzzy
-arr_sanitasi = df_sanitasi['SMA_2022'].to_numpy()
+arr_sanitasi = df_sanitasi['SMA_2020'].to_numpy()
 
 #FAKTOR DESA UCI
 cur.execute("SELECT desa_uci.kabkota_id, desa_uci.tahun_id, (CAST(desa_uci.jml_desa_uci AS FLOAT) / CAST(kabupaten_kota.jml_desa AS FLOAT))*100 as persentase FROM desa_uci join kabupaten_kota on desa_uci.kabkota_id = kabupaten_kota.id_kab order by desa_uci.tahun_id, desa_uci.kabkota_id asc;")
@@ -105,7 +105,7 @@ df_desauci.loc[:,"SMA_2020"] = np.round(((df_desauci.loc[:,'tahun2017'] + df_des
 df_desauci.loc[:,"SMA_2021"] = np.round(((df_desauci.loc[:,'tahun2018'] + df_desauci.loc[:,'tahun2019'] +df_desauci.loc[:,'tahun2020'])/3),1)
 df_desauci.loc[:,"SMA_2022"] = np.round(((df_desauci.loc[:,'tahun2019'] + df_desauci.loc[:,'tahun2020'] +df_desauci.loc[:,'tahun2021'])/3),1)
 
-arr_desa = df_desauci['SMA_2022'].to_numpy()
+arr_desa = df_desauci['SMA_2020'].to_numpy()
 
 #FAKTOR ASI EKSKLUSIF
 cur.execute("SELECT kabkota_id, tahun_id, (CAST(jml_diberi_asi AS FLOAT) / CAST(jml_bayi AS FLOAT))*100 as persentase FROM asi_eksklusif order by tahun_id, kabkota_id asc;")
@@ -135,7 +135,7 @@ df_asi.loc[:,"SMA_2021"] = np.round(((df_asi.loc[:,'tahun2018'] + df_asi.loc[:,'
 df_asi.loc[:,"SMA_2022"] = np.round(((df_asi.loc[:,'tahun2019'] + df_asi.loc[:,'tahun2020'] +df_asi.loc[:,'tahun2021'])/3),1)
 
 #simpan di array untuk proses fuzzy
-arr_asi = df_asi['SMA_2022'].to_numpy()
+arr_asi = df_asi['SMA_2020'].to_numpy()
 
 #FAKTOR STUNTING
 cur.execute("SELECT kabkota_id, tahun_id, CAST(persentase AS FLOAT) FROM stunting order by tahun_id, kabkota_id asc;")
@@ -165,5 +165,5 @@ df_stunting.loc[:,"SMA_2021"] = np.round(((df_stunting.loc[:,'tahun2018'] + df_s
 df_stunting.loc[:,"SMA_2022"] = np.round(((df_stunting.loc[:,'tahun2019'] + df_stunting.loc[:,'tahun2020'] +df_stunting.loc[:,'tahun2021'])/3),1)
 
 #simpan di array untuk proses fuzzy
-arr_stunting = df_stunting['SMA_2022'].to_numpy()
+arr_stunting = df_stunting['SMA_2020'].to_numpy()
 
