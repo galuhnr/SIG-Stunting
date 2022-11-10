@@ -24,32 +24,34 @@ for i in range(len(arr_pelayanan)):
   tipping.input['asi'] = arr_asi[i]
   tipping.input['stunting'] = arr_stunting[i]
   tipping.compute()
-  deff = tipping.output['risiko']
+  deff = np.around(tipping.output['risiko'],4)
   datas.append(deff)
 
 hasil = pd.DataFrame({'defuzzification':datas})
+# hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
+# print(hasil)
 
 for ind, row in hasil.iterrows():
     hasil.loc[hasil['defuzzification'] < 1.5, 'tingkat_risiko'] = 'Rendah' 
     hasil.loc[(hasil['defuzzification'] >= 1.5) & (hasil['defuzzification'] < 2.5) , 'tingkat_risiko'] = 'Sedang' 
     hasil.loc[hasil['defuzzification'] >= 2.5 , 'tingkat_risiko'] = 'Tinggi' 
 
-cur.execute("SELECT kabupaten_kota.id_kab, tb_tahun.id_tahun from kabupaten_kota, tb_tahun  where tb_tahun.id_tahun = 4 order by id_kab asc;")
+cur.execute("SELECT tb_tahun.id_tahun, kabupaten_kota.id_kab from tb_tahun, kabupaten_kota where tb_tahun.id_tahun = 6 order by kabupaten_kota.id_kab asc;")
 datakab = cur.fetchall()
 df_kab = pd.DataFrame(datakab, columns=["tahun_id", "kabkota_id"])
 
 #untuk id ditabel hasil
 df_id = pd.DataFrame()
-df_id['id'] = np.arange(0, 0 + len(datakab)) + 1
+df_id['id'] = np.arange(76, 76 + len(datakab)) + 1
 
 data_new = pd.concat([df_id,df_kab,hasil], axis=1)
+#print(data_new)
 
 data_sql=data_new.to_numpy()
 
-#print(data_sql)
 def bulkInsert(records):
     try:
-        sql_insert_query = """ INSERT INTO prediksi (id_prediksi, tahun_id, kabkota_id, defuzzifikasi, tingkat_risiko) 
+        sql_insert_query = """ INSERT INTO prediksi_risiko (id_prediksi, tahun_id, kabkota_id, defuzzifikasi, tingkat_risiko) 
                            VALUES (%s,%s,%s,%s,%s) """
 
         # executemany() to insert multiple rows

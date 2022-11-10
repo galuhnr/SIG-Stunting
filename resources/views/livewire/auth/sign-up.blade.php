@@ -51,8 +51,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" >
-                    <div class="mt-6">
+                <div class="col-xl-4 col-lg-6 col-md-6" >
+                    <div class="mt-7">
                         <img src="../assets/img/bg-login.jpg" alt="" width="800px">
                     </div>
                 </div>

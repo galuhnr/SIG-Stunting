@@ -70,6 +70,27 @@ class PetaApiController extends Component
     {
         $fuzz = DB::table('prediksi_risiko')
                         ->select()
+                        ->where('tahun_id', '=', 4)
+                        ->get();
+        $result = json_encode($fuzz);
+        echo $result;
+    }
+
+    public function result8()
+    {
+        $fuzz = DB::table('prediksi_risiko')
+                        ->select()
+                        ->where('tahun_id', '=', 5)
+                        ->get();
+        $result = json_encode($fuzz);
+        echo $result;
+    }
+
+    public function result9()
+    {
+        $fuzz = DB::table('prediksi_risiko')
+                        ->select()
+                        ->where('tahun_id', '=', 6)
                         ->get();
         $result = json_encode($fuzz);
         echo $result;

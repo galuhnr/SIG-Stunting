@@ -24,14 +24,15 @@
       <div class="card mb-4 mx-4">
         <div class="card-header pb-0">
           <div class="d-flex justify-content-between">
-            <h5>{{ __('Visualisasi Prediksi Pemetaan Tingkat Risiko Stunting Jawa Timur Tahun 2022') }}</h5>
+            <h5>{{ __('Visualisasi Prediksi Pemetaan Tingkat Risiko Stunting Jawa Timur Tahun 2020') }}</h5>
             <div class="dropdown">
               <button class="btn bg-gradient-primary btn-sm mb-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                2022
+                2020
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="#">2020</a></li>
-                <li><a class="dropdown-item" href="#">2021</a></li>
+                <li><a class="dropdown-item" href="{{ route('peta-prediksi2020') }}">2020</a></li>
+                <li><a class="dropdown-item" href="{{ route('peta-prediksi2021') }}">2021</a></li>
+                <li><a class="dropdown-item" href="{{ route('peta-prediksi2022') }}">2022</a></li>
               </ul>
             </div>
           </div>
@@ -58,7 +59,7 @@
         layers: [peta]
   });
 
-  var api = 'http://127.0.0.1:8000/api/prediksi2022';
+  var api = 'http://127.0.0.1:8000/api/prediksi2020';
   
   //data api yang diambil
   var dataRisiko=[];

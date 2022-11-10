@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="../assets/img/earth.png">
-    <title>Website Pemetaan Tingkat Risiko Stunting Provinsi Jawa Timur</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <!-- CSS Files -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-</head>
-
-<body class="landing-page sidebar-collapse">
+<main class="landing-page sidebar-collapse" >
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="https://demos.creative-tim.com/paper-kit/index.html" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" target="_blank">
-          Paper Kit 2
+        <a class="navbar-brand" href="#" rel="tooltip" title="Sistem Informasi Pemetaan Stunting" data-placement="bottom" target="_blank">
+          STUNTING JATIM
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar bar1"></span>
@@ -33,284 +15,304 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="../index.html" class="nav-link"><i class="nc-icon nc-layout-11"></i> Components</a>
+            <a href="#" class="nav-link" ><i class="fa-solid fa-house"></i> Beranda</a>
           </li>
           <li class="nav-item">
-            <a href="https://demos.creative-tim.com/paper-kit-2/docs/1.0/getting-started/introduction.html" target="_blank" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
+            <a href="{{ route('peta2021') }}" target="_blank" class="nav-link"><i class="fa-solid fa-earth-americas"></i> Pemetaan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-              <i class="fa fa-twitter"></i>
-              <p class="d-lg-none">Twitter</p>
-            </a>
+            <a href="#" target="_blank" class="nav-link"><i class="fa-solid fa-chart-simple"></i> Grafik</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-              <i class="fa fa-facebook-square"></i>
-              <p class="d-lg-none">Facebook</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-              <i class="fa fa-instagram"></i>
-              <p class="d-lg-none">Instagram</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial" target="_blank">
-              <i class="fa fa-github"></i>
-              <p class="d-lg-none">GitHub</p>
-            </a>
+            <a href="#" target="_blank" class="nav-link">Informasi Data</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- End Navbar -->
-  <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/daniel-olahh.jpg');">
-    <div class="filter"></div>
+
+  <div class="page-header" style="background-color: yellow;">
     <div class="container">
-      <div class="motto text-center">
-        <h1>Example page</h1>
-        <h3>Start designing your landing page here.</h3>
-        <br />
-        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="btn btn-outline-neutral btn-round"><i class="fa fa-play"></i>Watch video</a>
-        <button type="button" class="btn btn-outline-neutral btn-round">Download</button>
+      <div class="row">
+        <div class="col-md-6 mt-5">
+          <div class="motto text-left">
+            <h1>Cegah Stunting</h1>
+            <div style="display: flex;">
+                <h2 style="margin-top: 15px !important;">Sebelum</h2>
+                <h2 style="color: black; margin-top: 15px !important;"> &nbspGenting</h2>
+            </div>
+            <div class="mt-5">
+              <p style="color: #565252; line-height: 30px;">Masalah stunting penting untuk diselesaikan, karena berpotensi mengganggu potensi sumber daya manusia dan berhubungan dengan tingkat kesehatan, bahkan kematian anak. Prevalensi stunting Indonesia pada tahun 2021 berada pada angka 24,4 persen.  
+                Angka tersebut masih dinilai tinggi, mengingat WHO menargetkan angka stunting tidak boleh lebih dari 20 persen.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mt-5" >
+          <img src="../assets/img/landing.jpg" alt="" height="450px" style="float: right;">
+        </div>
       </div>
     </div>
   </div>
+
   <div class="main">
+
+    <!-- Section 2 Pilihan-->
     <div class="section text-center">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="title">Let's talk product</h2>
-            <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn't scroll to get here. Add a button if you want the user to see more.</h5>
-            <br>
-            <a href="#paper-kit" class="btn btn-danger btn-round">See Details</a>
-          </div>
-        </div>
-        <br/>
-        <br/>
-        <div class="row">
           <div class="col-md-3">
-            <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-album-2"></i>
-              </div>
-              <div class="description">
-                <h4 class="info-title">Beautiful Gallery</h4>
-                <p class="description">Spend your time generating new ideas. You don't have to think of implementing.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+            <div class="kotak">
+              <div class="info">
+                <div class="icon icon-danger" style="margin-top: 10px;">
+                  <i class="nc-icon nc-bulb-63"></i>
+                </div>
+                <div class="mb-3 kotak-text">
+                  <a href="#tentangStunting" style="color: #565252; font-weight: 400; font-size: medium;">Tentang Stunting</a>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-bulb-63"></i>
-              </div>
-              <div class="description">
-                <h4 class="info-title">New Ideas</h4>
-                <p>Larger, yet dramatically thinner. More powerful, but remarkably power efficient.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-chart-bar-32"></i>
-              </div>
-              <div class="description">
-                <h4 class="info-title">Statistics</h4>
-                <p>Choose from a veriety of many colors resembling sugar paper pastels.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+            <div class="kotak">
+              <div class="info">
+                <div class="icon icon-danger" style="margin-top: 10px;">
+                  <i class="nc-icon nc-atom"></i>
+                </div>
+                <div class="mb-3 kotak-text">
+                  <a href="#penyebabStunting" style="color: #565252; font-weight: 400; font-size: medium;">Penyebab Stunting</a>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-3">
-            <div class="info">
-              <div class="icon icon-danger">
-                <i class="nc-icon nc-sun-fog-29"></i>
+            <div class="kotak">
+              <div class="info">
+                <div class="icon icon-danger" style="margin-top: 10px;">
+                  <i class="nc-icon nc-tile-56"></i>
+                </div>
+                <div class="mb-3 kotak-text">
+                  <a href="#dampakStunting" style="color: #565252; font-weight: 400; font-size: medium;">Dampak Stunting</a>
+                </div>
               </div>
-              <div class="description">
-                <h4 class="info-title">Delightful design</h4>
-                <p>Find unique and handmade delightful designs related items directly from our sellers.</p>
-                <a href="javascript:;" class="btn btn-link btn-danger">See more</a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="kotak">
+              <div class="info">
+                <div class="icon icon-danger" style="margin-top: 10px;">
+                  <i class="nc-icon nc-sun-fog-29"></i>
+                </div>
+                <div class="mb-3 kotak-text">
+                  <a href="#pencegahanStunting" style="color: #565252; font-weight: 400; font-size: medium;">Pencegahan Stunting</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="section section-dark text-center">
-      <div class="container">
-        <h2 class="title">Let's talk about us</h2>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="card card-profile card-plain">
-              <div class="card-avatar">
-                <a href="#avatar">
-                  <img src="../assets/img/faces/clem-onojeghuo-3.jpg" alt="...">
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="#paper-kit">
-                  <div class="author">
-                    <h4 class="card-title">Henry Ford</h4>
-                    <h6 class="card-category">Product Manager</h6>
-                  </div>
-                </a>
-                <p class="card-description text-center">
-                  Teamwork is so important that it is virtually impossible for you to reach the heights of your capabilities or make the money that you want without becoming very good at it.
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-profile card-plain">
-              <div class="card-avatar">
-                <a href="#avatar">
-                  <img src="../assets/img/faces/joe-gardner-2.jpg" alt="...">
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="#paper-kit">
-                  <div class="author">
-                    <h4 class="card-title">Sophie West</h4>
-                    <h6 class="card-category">Designer</h6>
-                  </div>
-                </a>
-                <p class="card-description text-center">
-                  A group becomes a team when each member is sure enough of himself and his contribution to praise the skill of the others. No one can whistle a symphony. It takes an orchestra to play it.
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card card-profile card-plain">
-              <div class="card-avatar">
-                <a href="#avatar">
-                  <img src="../assets/img/faces/erik-lucatero-2.jpg" alt="...">
-                </a>
-              </div>
-              <div class="card-body">
-                <a href="#paper-kit">
-                  <div class="author">
-                    <h4 class="card-title">Robert Orben</h4>
-                    <h6 class="card-category">Developer</h6>
-                  </div>
-                </a>
-                <p class="card-description text-center">
-                  The strength of the team is each individual member. The strength of each member is the team. If you can laugh together, you can work together, silence isn’t golden, it’s deadly.
-                </p>
-              </div>
-              <div class="card-footer text-center">
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-twitter"></i></a>
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-google-plus"></i></a>
-                <a href="#pablo" class="btn btn-link btn-just-icon btn-neutral"><i class="fa fa-linkedin"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section landing-section">
+    <!-- End Section 2 Pilihan-->
+
+    <!-- Section 3 Tentang Stunting-->
+    <div class="section" id="tentangStunting">
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
-            <h2 class="text-center">Keep in touch?</h2>
-            <form class="contact-form">
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Name</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-single-02"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Name">
+          <div class="col-4">
+            <div class="text-left">
+              <h3 style="color: #E5352B;">Tentang Stunting</h3>
+              <p style="text-align: justify; margin-top: 30px; line-height: 30px;">Stunting  adalah kondisi gagal tumbuh pada anak berusia di bawah lima tahun (balita) akibat kekurangan gizi secara kronis 
+                dan infeksi berulang terutama pada periode 1000 Hari Pertama Kehidupan (HPK).</p>
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <div class="col-6">
+                <div class="card card-profile card-plain" style="margin-left: 80px !important;"> 
+                  <div class="bunder">
+                    <img src="../assets/img/icon/height.png" alt="">
                   </div>
-                </div>
-                <div class="col-md-6">
-                  <label>Email</label>
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="nc-icon nc-email-85"></i>
-                      </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Email">
+                  <div class="card-body text-left">
+                    <h4 class="card-title" style="color: #E5352B !important;">Tubuh Pendek</h4>
+                    <p style="text-align: left; margin-top: 10px; line-height: 25px;">
+                      Secara fisik, anak  stunting  terlihat lebih pendek dari teman sebayanya. 
+                    </p>
                   </div>
                 </div>
               </div>
-              <label>Message</label>
-              <textarea class="form-control" rows="4" placeholder="Tell us your thoughts and feelings..."></textarea>
-              <div class="row">
-                <div class="col-md-4 ml-auto mr-auto">
-                  <button class="btn btn-danger btn-lg btn-fill">Send Message</button>
+              <div class="col-6">
+                <div class="card card-profile card-plain ml-2"> 
+                  <div class="bunder">
+                    <img src="../assets/img/icon/neuron.png" alt="">
+                  </div>
+                  <div class="card-body text-left">
+                    <h4 class="card-title" style="color: #E5352B !important;">Perkembangan Terlambat</h4>
+                    <p style="text-align: left; margin-top: 10px; line-height: 25px;">
+                      Pertumbuhan gigi terlambat, wajah tampak lebih muda, anak jarang malakukan kontak mata dan lebih pendiam.
+                    </p>
+                  </div>
                 </div>
               </div>
-            </form>
+            </div>
+            <div class="row">
+              <div class="col-6" style="margin-top: -30px !important;">
+                <div class="card card-profile card-plain" style="margin-left: 80px !important;"> 
+                  <div class="bunder">
+                    <img src="../assets/img/icon/sakit.png" alt="">
+                  </div>
+                  <div class="card-body text-left">
+                    <h4 class="card-title" style="color: #E5352B !important; line-height: 35px;">Mudah Terserang Penyakit</h4>
+                    <p style="text-align: left; margin-top: 10px; line-height: 25px;">
+                      Anak stunting lebih beresiko terserang penyakit infeksi akibat kurangnya nutrisi sehingga kekebalan tubuh menurun.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6" style="margin-top: -30px !important;">
+                <div class="card card-profile card-plain" style="margin-right: 80px !important;"> 
+                  <div class="bunder">
+                    <img src="../assets/img/icon/kognitif.png" alt="">
+                  </div>
+                  <div class="card-body text-left">
+                    <h4 class="card-title" style="color: #E5352B !important; line-height: 35px;">Penurunan Kemampuan Kognitif</h4>
+                    <p style="text-align: left; margin-top: 10px; line-height: 25px;">
+                      Kemampuan kognitif anak menurun yang ditandai dengan IQ rendah bahkan hingga dapat dikategorikan disabilitas intelektual.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Section 3 Tentang Stunting-->
+
+    <!-- Section 4 Penyebab Stunting-->
+    <div class="section" id="penyebabStunting">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <img src="../assets/img/icon/gambar-penyebab.png" alt="">
+          </div>
+          <div class="col-4" style="margin-left: -10px !important;">
+            <div class="text-left">
+              <h3 style="color: #E5352B; margin-bottom: 20px;">Penyebab Stunting</h3>
+              <p style="text-align: justify; line-height: 25px;">
+                Status gizi buruk pada ibu hamil dan bayi merupakan faktor utama yang menyebabkan anak balita mengalami stunting. Berikut adalah penyebab yang masih sering ditemui:
+              </p>
+              <ul type="disc" style="line-height: 30px;">
+                <li>Kurang asupan gizi selama hamil</li>
+                <li>Kebutuhan gizi anak tidak tercukupi</li>
+                <li>Infeksi berulang atau kronis</li>
+                <li>Pengetahuan ibu yang kurang memadai mengenai gizi sebelum hamil, saat hamil, dan setelah melahirkan</li>
+                <li>Terbatasnya layanan kesehatan, termasuk layanan kehamilan dan postnatal</li>
+                <li>Masih kurangnya akses makanan bergizi karena tergolong mahal</li>
+                <li>Kurangnya akses air bersih atau sanitasi yang buruk</li>
+              </ul>      
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- End Section 4 Penyebab Stunting-->
+
+    <!-- Section 5 Dampak Stunting-->
+    <div class="section" id="dampakStunting">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <h3 style="color: #E5352B;">Apa Dampak Stunting ?</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="kotak-biru" style="margin-left: -10px;"></div>
+          </div>
+        </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="kotak-dampak" style="margin-left: 35px !important;">
+                  <h4 class="text-center mb-2">Segi Kesehatan</h4>
+                  <ul type="disc" style="line-height: 30px;">
+                    <li>Penurunan sistem kekebalan tubuh anak</li>
+                    <li>Menghambat perkembangan otak, metobolisme tubuh, dan pertumbuhan fisik</li>
+                    <li>Lebih beresiko menderita penyakit degeneratif  kerika beranjak dewasa</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="kotak-dampak">
+                  <h4 class="text-center mb-2">Segi Perkembangan</h4>
+                  <ul type="disc" style="line-height: 30px;">
+                    <li>Terhambatnya perkembangan kognitif pada anak</li>
+                    <li>Mempengaruhi prestasi belajar dan mutu sumber daya manusia di masa depan</li>
+                    <li>Perkembangan motorik dan tingkat intelegensi yang lebih rendah</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="kotak-dampak mr-4">
+                  <h4 class="text-center mb-2">Segi Ekonomi</h4>
+                  <ul type="disc" style="line-height: 30px;">
+                    <li>Diperkirakan dapat menurunkan produk domestik bruto (PDB) sekitar 3% per tahun</li>
+                    <li>Meningkatkan pengeluaran untuk biaya kesehatan dan perawatan untuk anak yang sakit.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Section 5 Dampak Stunting-->
+
+     <!-- Section 6 Pencegahan Stunting-->
+    <div class="section" id="pencegahanStunting">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <h3 style="color: #E5352B;">Bagaimana cara mencegah Stunting ?</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <iframe width="100%" height="680px" src="https://www.youtube.com/embed/aM5vFHn9I9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Section 6 Pencegahan Stunting-->
+
   </div>
-  <footer class="footer   footer-white ">
+
+  <footer class="footer" style="background-color: #1A2E35; color: white;">
     <div class="container">
       <div class="row">
-        <nav class="footer-nav">
-          <ul>
-            <li>
-              <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-            </li>
-            <li>
-              <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-            </li>
-            <li>
-              <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="credits ml-auto">
-          <span class="copyright">
-            ©
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-          </span>
+        <div class="col-6 p-4">
+          <h5 class="mb-2 mt-4">Tentang</h5>
+          <p style="font-size: 12px !important; text-align: justify;">
+            Website ini merupakan sistem informasi stunting yang juga menyajikan visualisasi pemetaan tingkat risiko stunting pada tiap daerah di provinsi Jawa Timur. 
+            Penentuan tingkat risiko ditentukan dengan beberapa kriteria dan diolah menggunakan metode fuzzy.
+          </p>
+          <div class="copyright text-muted text-lg-left" style="color: white !important;">
+            Copyright ©  <script>
+                document.write(new Date().getFullYear())
+              </script> PENS by 
+              <a style="color: white;" href="#" class="font-weight-bold ml-1" target="_blank">Galuh Nurul</a> 
+          </div>
+        </div>
+        <div class="col-6 p-4">
+          <h5 class="mt-4">Lainnya</h5>
+          <p><a href="https://stunting.go.id/" style="color: #E5352B;">Website Percepatan Pencegahan Stunting</a></p>
+          <p class="mt-2"><a href="https://www.pens.ac.id/" style="color: white;">Politeknik Elektronika Negeri Surabaya</a></p>
+          <a href="https://dinkes.jatimprov.go.id/#" style="color: white;"><i class="fa-solid fa-earth-americas"></i></a>
+          <a href="#" style="color: white; margin-left: 10px;"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCLCW7E-ViTZEd2jVBSEsMKg" style="color: white; margin-left: 10px;"><i class="fa-brands fa-youtube"></i></a>
         </div>
       </div>
     </div>
   </footer>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="../assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="../assets/js/plugins/bootstrap-switch.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="../assets/js/plugins/moment.min.js"></script>
-  <script src="../assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-</body>
 
-</html>
+</main>

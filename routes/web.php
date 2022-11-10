@@ -26,7 +26,9 @@ use App\Http\Livewire\Peta\PetaController19;
 use App\Http\Livewire\Peta\PetaController20;
 use App\Http\Livewire\Peta\PetaController21;
 
-use App\Http\Livewire\PrediksiController;
+use App\Http\Livewire\Prediksi\PrediksiController20;
+use App\Http\Livewire\Prediksi\PrediksiController21;
+use App\Http\Livewire\Prediksi\PrediksiController22;
 
 use App\Http\Livewire\TingkatRisiko\TRController17;
 use App\Http\Livewire\TingkatRisiko\TRController18;
@@ -57,16 +59,18 @@ Route::get('/sign-up', SignUp::class)->name('sign-up');
 Route::get('/login', Login::class)->name('login');
 Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
 Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+Route::get('/peta2017', PetaController17::class)->name('peta2017');
+Route::get('/peta2018', PetaController18::class)->name('peta2018');
+Route::get('/peta2019', PetaController19::class)->name('peta2019');
+Route::get('/peta2020', PetaController20::class)->name('peta2020');
+Route::get('/peta2021', PetaController21::class)->name('peta2021');
+
+Route::get('/peta-prediksi2020', PrediksiController20::class)->name('peta-prediksi2020');
+Route::get('/peta-prediksi2021', PrediksiController21::class)->name('peta-prediksi2021');
+Route::get('/peta-prediksi2022', PrediksiController22::class)->name('peta-prediksi2022');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
-    Route::get('/peta2017', PetaController17::class)->name('peta2017');
-    Route::get('/peta2018', PetaController18::class)->name('peta2018');
-    Route::get('/peta2019', PetaController19::class)->name('peta2019');
-    Route::get('/peta2020', PetaController20::class)->name('peta2020');
-    Route::get('/peta2021', PetaController21::class)->name('peta2021');
-    
-    Route::get('/peta-prediksi', PrediksiController::class)->name('peta-prediksi');
 
     Route::get('/kabupaten-kota', KabupatenController::class)->name('kabupaten-kota');
     

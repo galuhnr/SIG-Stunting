@@ -44,10 +44,12 @@ for i in range(len(arr_pelayanan)):
   tipping.input['asi'] = arr_asi[i]
   tipping.input['stunting'] = arr_stunting[i]
   tipping.compute()
-  deff = tipping.output['risiko']
+  deff = np.around(tipping.output['risiko'],4)
   datas.append(deff)
 
 hasil = pd.DataFrame({'defuzzification':datas})
+# hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
+# print(hasil)
 
 for ind, row in hasil.iterrows():
   hasil.loc[hasil['defuzzification'] < 1.5, 'tingkat_risiko'] = 'Rendah' 
@@ -64,6 +66,7 @@ df_id['id'] = np.arange(152, 152 + len(datakab)) + 1
 
 data_new = pd.concat([df_id,tahun_kab,hasil], axis=1)
 #print(data_new)
+
 data_sql=data_new.to_numpy()
 
 def bulkInsert(records):
