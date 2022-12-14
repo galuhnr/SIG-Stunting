@@ -24,17 +24,16 @@
       <div class="card mb-4 mx-4">
         <div class="card-header pb-0">
           <div class="d-flex justify-content-between">
-            <h5>{{ __('Visualisasi Pemetaan Tingkat Risiko Stunting Jawa Timur Tahun 2021') }}</h5>
+            <h5>{{ __('Visualisasi Prediksi Pemetaan Tingkat Risiko Stunting Jawa Timur Tahun 2019') }}</h5>
             <div class="dropdown">
               <button class="btn bg-gradient-primary btn-sm mb-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                2021
+                2019
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="{{route('peta2017')}}">2017</a></li>
-                <li><a class="dropdown-item" href="{{route('peta2018')}}">2018</a></li>
-                <li><a class="dropdown-item" href="{{route('peta2019')}}">2019</a></li>
-                <li><a class="dropdown-item" href="{{route('peta2020')}}">2020</a></li>
-                <li><a class="dropdown-item" href="{{route('peta2021')}}">2021</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2019') }}">2019</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2020') }}">2020</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2021') }}">2021</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2022') }}">2022</a></li>
               </ul>
             </div>
           </div>
@@ -61,7 +60,7 @@
         layers: [peta]
   });
 
-  var api = 'http://127.0.0.1:8000/api/stunting2021';
+  var api = 'http://127.0.0.1:8000/api/prediksi2019';
   
   //data api yang diambil
   var dataRisiko=[];
@@ -102,11 +101,11 @@
 	    var layer = e.target;
 
 	    layer.setStyle({
-          weight: 0,
-          opacity: 1,
-          color: 'white',
-          dashArray: '0',
-          fillOpacity: 1.5
+            weight: 0,
+            opacity: 1,
+            color: 'white',
+            dashArray: '0',
+            fillOpacity: 1.5
 	    });
 
 	    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -132,36 +131,6 @@
     });
     var kab_geojson= f.properties.KODE;
     data = dataRisiko[kab_geojson];
-    var popUp = '<table>' +
-                      '<tr>'+
-                        '<td colspan="4"><h6>'+f.properties.NAME_2+'</h6></td>'+
-                      '</tr>'+
-                      '<tr>'+
-                        '<td>Pelayanan Kesehatan Balita'+
-                        '<td>'+data.pelayanan_kesehatan+'%'+'</h6></td>'+
-                      '</tr>'+
-                      '<tr>'+
-                        '<td>Sanitasi Layak'+
-                        '<td>'+data.sanitasi+'%'+'</h6></td>'+
-                      '</tr>'+
-                      '<tr>'+
-                        '<td>Desa UCI(Universal Child Immunization)'+
-                        '<td>'+data.desa_uci+'%'+'</h6></td>'+
-                      '</tr>'+
-                      '<tr>'+
-                        '<td>Cakupan ASI Eksklusif'+
-                        '<td>'+data.asi+'%'+'</h6></td>'+
-                      '</tr>'+
-                      '<tr>'+
-                        '<td>Prevalensi Stunting'+
-                        '<td>'+data.stunting+'%'+'</h6></td>'+
-                      '</tr>'+
-                      '<tr>'+
-                        '<td>Tingkat Risiko'+
-                        '<td>'+data.tingkat_risiko+'</h6></td>'+
-                      '</tr>'+
-                '</table>';
-    layer.bindPopup(popUp);
     layer.bindTooltip(f.properties['NAME_2'],{
             permanent:true,
             direction:"center",
@@ -184,7 +153,6 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
-
 
   function getData(){
     $.ajax({
@@ -209,7 +177,5 @@ legend.addTo(map);
       }
     });
   }
-
-
 
 </script>

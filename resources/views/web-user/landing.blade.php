@@ -1,38 +1,5 @@
-<main class="landing-page sidebar-collapse" >
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
-    <div class="container">
-      <div class="navbar-translate">
-        <a class="navbar-brand" href="#" rel="tooltip" title="Sistem Informasi Pemetaan Stunting" data-placement="bottom" target="_blank">
-          STUNTING JATIM
-        </a>
-        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-bar bar1"></span>
-          <span class="navbar-toggler-bar bar2"></span>
-          <span class="navbar-toggler-bar bar3"></span>
-        </button>
-      </div>
-      <div class="collapse navbar-collapse justify-content-end" id="navigation">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="#" class="nav-link" ><i class="fa-solid fa-house"></i> Beranda</a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('peta2021') }}" target="_blank" class="nav-link"><i class="fa-solid fa-earth-americas"></i> Pemetaan</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link"><i class="fa-solid fa-chart-simple"></i> Grafik</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" target="_blank" class="nav-link">Informasi Data</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- End Navbar -->
-
-  <div class="page-header" style="background-color: yellow;">
+<main class="landing-page sidebar-collapse">
+  <div class="page-header" style="background-color: #ffff;">
     <div class="container">
       <div class="row">
         <div class="col-md-6 mt-5">
@@ -65,7 +32,7 @@
             <div class="kotak">
               <div class="info">
                 <div class="icon icon-danger" style="margin-top: 10px;">
-                  <i class="nc-icon nc-bulb-63"></i>
+                  <i class="fa-solid fa-lightbulb"></i>
                 </div>
                 <div class="mb-3 kotak-text">
                   <a href="#tentangStunting" style="color: #565252; font-weight: 400; font-size: medium;">Tentang Stunting</a>
@@ -77,7 +44,7 @@
             <div class="kotak">
               <div class="info">
                 <div class="icon icon-danger" style="margin-top: 10px;">
-                  <i class="nc-icon nc-atom"></i>
+                  <i class="fa-solid fa-circle-exclamation"></i>
                 </div>
                 <div class="mb-3 kotak-text">
                   <a href="#penyebabStunting" style="color: #565252; font-weight: 400; font-size: medium;">Penyebab Stunting</a>
@@ -89,7 +56,7 @@
             <div class="kotak">
               <div class="info">
                 <div class="icon icon-danger" style="margin-top: 10px;">
-                  <i class="nc-icon nc-tile-56"></i>
+                  <i class="fa-solid fa-person-rays"></i>
                 </div>
                 <div class="mb-3 kotak-text">
                   <a href="#dampakStunting" style="color: #565252; font-weight: 400; font-size: medium;">Dampak Stunting</a>
@@ -101,7 +68,7 @@
             <div class="kotak">
               <div class="info">
                 <div class="icon icon-danger" style="margin-top: 10px;">
-                  <i class="nc-icon nc-sun-fog-29"></i>
+                  <i class="fa-solid fa-hands-holding-child"></i>
                 </div>
                 <div class="mb-3 kotak-text">
                   <a href="#pencegahanStunting" style="color: #565252; font-weight: 400; font-size: medium;">Pencegahan Stunting</a>
@@ -286,33 +253,5 @@
     <!-- End Section 6 Pencegahan Stunting-->
 
   </div>
-
-  <footer class="footer" style="background-color: #1A2E35; color: white;">
-    <div class="container">
-      <div class="row">
-        <div class="col-6 p-4">
-          <h5 class="mb-2 mt-4">Tentang</h5>
-          <p style="font-size: 12px !important; text-align: justify;">
-            Website ini merupakan sistem informasi stunting yang juga menyajikan visualisasi pemetaan tingkat risiko stunting pada tiap daerah di provinsi Jawa Timur. 
-            Penentuan tingkat risiko ditentukan dengan beberapa kriteria dan diolah menggunakan metode fuzzy.
-          </p>
-          <div class="copyright text-muted text-lg-left" style="color: white !important;">
-            Copyright ©  <script>
-                document.write(new Date().getFullYear())
-              </script> PENS by 
-              <a style="color: white;" href="#" class="font-weight-bold ml-1" target="_blank">Galuh Nurul</a> 
-          </div>
-        </div>
-        <div class="col-6 p-4">
-          <h5 class="mt-4">Lainnya</h5>
-          <p><a href="https://stunting.go.id/" style="color: #E5352B;">Website Percepatan Pencegahan Stunting</a></p>
-          <p class="mt-2"><a href="https://www.pens.ac.id/" style="color: white;">Politeknik Elektronika Negeri Surabaya</a></p>
-          <a href="https://dinkes.jatimprov.go.id/#" style="color: white;"><i class="fa-solid fa-earth-americas"></i></a>
-          <a href="#" style="color: white; margin-left: 10px;"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.youtube.com/channel/UCLCW7E-ViTZEd2jVBSEsMKg" style="color: white; margin-left: 10px;"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 </main>

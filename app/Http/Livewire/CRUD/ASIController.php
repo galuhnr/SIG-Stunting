@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
-use App\Models\Stunting;
+use App\Models\ASIEksklusif;
 
-class StuntingController extends Component
+class ASIController extends Component
 {
     use WithPagination;
     public $paginationTheme = 'bootstrap';
     public $listeners = ['delete'];
     public $paging;
 
-    public $stunting_id, $tahun_id, $kabkota_id, $jml_balita_diukur, $jml_balita_stunting, $persentase;
+    public $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
     public $updateMode = false;
 
     public function mount()
@@ -25,41 +25,39 @@ class StuntingController extends Component
 
     public function render()
     {
-        $data = Stunting::with('tb_tahun', 'kabupaten_kota')->orderBy('id_stunting','asc')->paginate($this->paging);
+        $data = ASIEksklusif::with('tb_tahun', 'kabupaten_kota')->orderBy('id_asi','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.stunting.index', compact('data','tahun','kab'));
+        return view('livewire.asi-eksklusif.index', compact('data','tahun','kab'));
     }
 
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_balita_diukur = '';
-        $this->jml_balita_stunting = '';
-        $this->persentase = '';
+        $this->jml_bayi = '';
+        $this->jml_diberi_asi = '';
     }
 
     public function create()
     {
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.stunting.create', compact('tahun', 'kab'));
+        return view('livewire.asi-eksklusif.create', compact('tahun', 'kab'));
     }
 
     public function store(){
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_balita_diukur' => 'required',
-            'jml_balita_stunting' => 'required',
+            'jml_bayi' => 'required',
+            'jml_diberi_asi' => 'required',
         ]);
         
-        Stunting::create([
+        ASIEksklusif::create([
             'tahun_id' => $this->tahun_id,
             'kabkota_id' => $this->kabkota_id,
-            'jml_balita_diukur' => $this->jml_balita_diukur,
-            'jml_balita_stunting' => $this->jml_balita_stunting,
-            'persentase' => $this->persentase
+            'jml_bayi' => $this->jml_bayi,
+            'jml_diberi_asi' => $this->jml_diberi_asi,
         ]);
 
         $this->resetInputFields();
@@ -74,13 +72,13 @@ class StuntingController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $data = Stunting::where('id_stunting', $id)->first();
-        $this->stunting_id = $id;
+        $data = ASIEksklusif::where('id_asi', $id)->first();
+        $this->asi_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_balita_diukur = $data->jml_balita_diukur;
-        $this->jml_balita_stunting = $data->jml_balita_stunting;
-        $this->persentase = $data->persentase;
+        $this->jml_bayi = $data->jml_bayi;
+        $this->jml_diberi_asi = $data->jml_diberi_asi;
+
     }
 
     public function update()
@@ -88,17 +86,16 @@ class StuntingController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_balita_diukur' => 'required',
-            'jml_balita_stunting' => 'required',
+            'jml_bayi' => 'required',
+            'jml_diberi_asi' => 'required',
         ]);
-        if ($this->stunting_id) {
-            $asi = Stunting::find($this->stunting_id);
+        if ($this->asi_id) {
+            $asi = ASIEksklusif::find($this->asi_id);
             $asi->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_balita_diukur' => $this->jml_balita_diukur,
-                'jml_balita_stunting' => $this->jml_balita_stunting,
-                'persentase' => $this->persentase,
+                'jml_bayi' => $this->jml_bayi,
+                'jml_diberi_asi' => $this->jml_diberi_asi,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -128,7 +125,7 @@ class StuntingController extends Component
 
     public function delete($id)
     {
-        Stunting::where('id_stunting', $id)->delete();
+        ASIEksklusif::where('id_asi', $id)->delete();
     }
 
 }

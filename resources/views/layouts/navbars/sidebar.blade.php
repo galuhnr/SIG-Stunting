@@ -3,7 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute right-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
+        <a class="navbar-brand m-0" href="{{ route('home') }}">
             <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="...">
             <span class="ms-1 font-weight-bold">Website Admin</span>
         </a>
@@ -22,21 +22,48 @@
                 </a>
             </li>
             <li class="nav-item mt-0">
-                <a class="nav-link {{ Route::currentRouteName() == 'peta-prediksi2022' ? 'active' : '' }}"
-                    href="{{ route('peta-prediksi2022') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'prediksi2022' ? 'active' : '' }}"
+                    href="{{ route('prediksi2022') }}">
                      <i style="font-size: 1rem;" class="fa-solid fa-earth-americas text-center
-                        {{ in_array(request()->route()->getName(),['peta-prediksi2022']) ? 'text-danger' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['prediksi2022']) ? 'text-danger' : 'text-dark' }}"></i>
                     <span class="nav-link-text ms-1">Peta Prediksi</span>
                 </a>
             </li>
-            <li class="nav-item mt-0">
-                <a class="nav-link {{ Route::currentRouteName() == 'grafik-data' ? 'active' : '' }}"
-                    href="{{ route('grafik-data') }}">
-                      <i style="font-size: 1rem;" class="fa-solid fa-chart-column text-center
-                        {{ in_array(request()->route()->getName(),['grafik-data']) ? 'text-danger' : 'text-dark' }}"></i>
-                    <span class="nav-link-text ms-1">Grafik Data</span>
-                </a>
+
+            <li class="nav-item mt-2">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Grafik Data</h6>
             </li>
+            <div class="dropdown" >
+                <li class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i style="font-size: 1rem;" class="fa-solid fa-calendar-days text-center text-dark"></i>
+                    <span class="nav-link-text ms-1">Pilih Grafik</span>
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{route('grafik-tingkatrisiko')}}">Tingkat Risiko Stunting</a></li>
+                    <li><a class="dropdown-item" href="{{route('grafik-pelayanan')}}">Pelayanan Kesehatan</a></li>
+                    <li><a class="dropdown-item" href="{{route('grafik-sanitasi')}}">Sanitasi Layak</a></li>
+                    <li><a class="dropdown-item" href="{{route('grafik-desauci')}}">Desa UCI</a></li>
+                    <li><a class="dropdown-item" href="{{route('grafik-asi')}}">ASI Eksklusif</a></li>
+                    <li><a class="dropdown-item" href="{{route('grafik-prevalensi-stunting')}}">Stunting</a></li>
+                </ul>
+            </div>
+
+            <li class="nav-item mt-2">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Hasil Tingkat Risiko</h6>
+            </li>
+            <div class="dropdown" >
+                <li class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i style="font-size: 1rem;" class="fa-solid fa-calendar-days text-center text-dark"></i>
+                    <span class="nav-link-text ms-1">Pilih Tahun</span>
+                </li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2017')}}">2017</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2018')}}">2018</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2019')}}">2019</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2020')}}">2020</a></li>
+                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2021')}}">2021</a></li>
+                </ul>
+            </div>
 
             <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Tabel Data Kriteria</h6>
@@ -83,23 +110,6 @@
             </li>
 
             <li class="nav-item mt-2">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Hasil Tingkat Risiko</h6>
-            </li>
-            <div class="dropdown" >
-                <li class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i style="font-size: 1rem;" class="fa-solid fa-calendar-days text-center text-dark"></i>
-                    <span class="nav-link-text ms-1">Pilih Tahun</span>
-                </li>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2017')}}">2017</a></li>
-                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2018')}}">2018</a></li>
-                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2019')}}">2019</a></li>
-                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2020')}}">2020</a></li>
-                    <li><a class="dropdown-item" href="{{route('tingkat-risiko2021')}}">2021</a></li>
-                </ul>
-            </div>
-
-            <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Informasi Lainnya</h6>
             </li>
             <li class="nav-item">
@@ -119,11 +129,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'info' ? 'active' : '' }}"
-                    href="{{ route('info') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'tahun' ? 'active' : '' }}"
+                    href="{{ route('tahun') }}">
                     <i style="font-size: 1rem;" class="fa-solid fa-circle-info text-center
-                        {{ in_array(request()->route()->getName(),['info']) ? 'text-danger' : 'text-dark' }}"></i>
-                    <span class="nav-link-text ms-1">Informasi Stunting</span>
+                        {{ in_array(request()->route()->getName(),['tahun']) ? 'text-danger' : 'text-dark' }}"></i>
+                    <span class="nav-link-text ms-1">Informasi Faskes</span>
                 </a>
             </li>
 

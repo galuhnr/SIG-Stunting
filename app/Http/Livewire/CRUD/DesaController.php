@@ -1,21 +1,24 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\desaUCI;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
-use App\Models\ASIEksklusif;
 
-class ASIEksklusifController extends Component
+class DesaController extends Component
 {
     use WithPagination;
-    public $paginationTheme = 'bootstrap';
-    public $listeners = ['delete'];
+
+    protected $paginationTheme = 'bootstrap';
+
+    protected $listeners = ['delete'];
+
     public $paging;
 
-    public $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
+    public $desa_id, $kabkota_id, $tahun_id, $jml_desa_uci;
     public $updateMode = false;
 
     public function mount()
@@ -25,39 +28,36 @@ class ASIEksklusifController extends Component
 
     public function render()
     {
-        $data = ASIEksklusif::with('tb_tahun', 'kabupaten_kota')->orderBy('id_asi','asc')->paginate($this->paging);
+        $data = desaUCI::with('tb_tahun','kabupaten_kota')->orderBy('id_desa', 'asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.asi-eksklusif.index', compact('data','tahun','kab'));
+        return view('livewire.desaUCI.index', compact('data', 'tahun', 'kab'));
     }
 
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_bayi = '';
-        $this->jml_diberi_asi = '';
+        $this->jml_desa_uci = '';
     }
 
     public function create()
     {
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.asi-eksklusif.create', compact('tahun', 'kab'));
+        return view('livewire.desaUCI.create', compact('tahun', 'kab'));
     }
 
     public function store(){
         $this->validate([
-            'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_bayi' => 'required',
-            'jml_diberi_asi' => 'required',
+            'tahun_id' => 'required',
+            'jml_desa_uci' => 'required',
         ]);
         
-        ASIEksklusif::create([
-            'tahun_id' => $this->tahun_id,
+        desaUCI::create([
             'kabkota_id' => $this->kabkota_id,
-            'jml_bayi' => $this->jml_bayi,
-            'jml_diberi_asi' => $this->jml_diberi_asi,
+            'tahun_id' => $this->tahun_id,
+            'jml_desa_uci' => $this->jml_desa_uci,
         ]);
 
         $this->resetInputFields();
@@ -72,13 +72,11 @@ class ASIEksklusifController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $data = ASIEksklusif::where('id_asi', $id)->first();
-        $this->asi_id = $id;
+        $data = desaUCI::where('id_desa', $id)->first();
+        $this->desa_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_bayi = $data->jml_bayi;
-        $this->jml_diberi_asi = $data->jml_diberi_asi;
-
+        $this->jml_desa_uci = $data->jml_desa_uci;
     }
 
     public function update()
@@ -86,16 +84,14 @@ class ASIEksklusifController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_bayi' => 'required',
-            'jml_diberi_asi' => 'required',
+            'jml_desa_uci' => 'required',
         ]);
-        if ($this->asi_id) {
-            $asi = ASIEksklusif::find($this->asi_id);
-            $asi->update([
+        if ($this->desa_id) {
+            $desa = desaUCI::find($this->desa_id);
+            $desa->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_bayi' => $this->jml_bayi,
-                'jml_diberi_asi' => $this->jml_diberi_asi,
+                'jml_desa_uci' => $this->jml_desa_uci,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -125,7 +121,7 @@ class ASIEksklusifController extends Component
 
     public function delete($id)
     {
-        ASIEksklusif::where('id_asi', $id)->delete();
+        desaUCI::where('id_desa', $id)->delete();
     }
 
 }

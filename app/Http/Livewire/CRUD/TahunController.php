@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CRUD;
 
-use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\InfoStunting;
+use App\Models\Tahun;
+use Livewire\Component;
 
-class InfoStuntingController extends Component
+class TahunController extends Component
 {
     use WithPagination;
 
@@ -14,8 +14,9 @@ class InfoStuntingController extends Component
 
     protected $listeners = ['delete'];
 
-    public $paging, $info_id, $nama_info, $isi_info;
-   
+    public $paging, $search;
+
+    public $tahun_id, $tahun;
     public $updateMode = false;
 
     public function mount()
@@ -25,26 +26,24 @@ class InfoStuntingController extends Component
 
     public function render()
     {
-        $data = InfoStunting::orderBy('id_info','asc')->paginate($this->paging);
-        $info = [
-            'data' => $data
+
+        $tahun = Tahun::orderBy('id_tahun', 'asc')->paginate($this->paging);
+        $thn = [
+            'data' => $tahun
         ];
-        return view('livewire.info-stunting.index', $info);
+        return view('livewire.tahun.index', $thn);
     }
 
     private function resetInputFields(){
-        $this->nama_info = '';
-        $this->isi_info = '';
+        $this->tahun = '';
     }
 
     public function store(){
         $this->validate([
-            'nama_info' => 'required',
-            'isi_info' => 'required',
+            'tahun' => 'required',
         ]);
-        InfoStunting::create([
-            'nama_info' => $this->nama_info,
-            'isi_info' => $this->isi_info,
+        Tahun::create([
+            'tahun' => $this->tahun,
         ]);
 
         $this->resetInputFields();
@@ -59,24 +58,21 @@ class InfoStuntingController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $info = InfoStunting::where('id_info', $id)->first();
-        $this->info_id = $id;
-        $this->nama_info = $info->nama_info;
-        $this->isi_info = $info->isi_info;
+        $thn = Tahun::where('id_tahun', $id)->first();
+        $this->tahun_id = $id;
+        $this->tahun = $thn->tahun;
         // dd($kabkota);
     }
 
     public function update()
     {
         $this->validate([
-            'nama_info' => 'required',
-            'isi_info' => 'required',
+            'tahun' => 'required',
         ]);
-        if ($this->info_id) {
-            $info = InfoStunting::find($this->info_id);
-            $info->update([
-                'nama_info' => $this->nama_info,
-                'isi_info' => $this->isi_info,
+        if ($this->tahun_id) {
+            $thn = Tahun::find($this->tahun_id);
+            $thn->update([
+                'tahun' => $this->tahun,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -107,7 +103,8 @@ class InfoStuntingController extends Component
     public function delete($id)
     {
         // KabupatenKota::destroy($id);
-        InfoStunting::where('id_info', $id)->delete();
+        Tahun::where('id_tahun', $id)->delete();
         
     }
+
 }

@@ -47,8 +47,8 @@ for i in range(len(arr_pelayanan)):
   deff = np.around(tipping.output['risiko'],4)
   datas.append(deff)
 
-hasil = pd.DataFrame({'defuzzification':datas})
-# hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
+#hasil = pd.DataFrame({'defuzzification':datas})
+hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
 # print(hasil)
 
 for ind, row in hasil.iterrows():
@@ -71,16 +71,16 @@ data_sql=data_new.to_numpy()
 
 def bulkInsert(records):
     try:
-        sql_insert_query = """ INSERT INTO hasil_risiko (id_hasil, tahun_id, kabkota_id, defuzzifikasi, tingkat_risiko) 
-                           VALUES (%s,%s,%s,%s,%s) """
+        sql_insert_query = """ INSERT INTO hasil_risiko_new (id_hasil, tahun_id, kabkota_id, pelayanan_kesehatan, sanitasi, desa_uci, asi, stunting, defuzzifikasi, tingkat_risiko) 
+                           VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) """
 
         # executemany() to insert multiple rows
         result = cur.executemany(sql_insert_query, records)
         conn.commit()
-        print(cur.rowcount, "Record inserted successfully into hasil table")
+        print(cur.rowcount, "Record inserted successfully into hasil risiko new table")
 
     except (Exception, psycopg2.Error) as error:
-        print("Failed inserting record into hasil table {}".format(error))
+        print("Failed inserting record into hasil risiko new table {}".format(error))
 
     finally:
         # closing database connection.

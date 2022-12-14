@@ -56,7 +56,7 @@
 	});
   
   var map = L.map('map', {
-        center: [-7.54409437100132, 112.20990556692459],
+        center: [-7.714265268560922, 113.06819518545991],
         zoom: 8,
         layers: [peta]
   });
@@ -92,11 +92,11 @@
         result = dataRisiko[kodekab_json];
         console.log(result);
         return {
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '5',
-            fillOpacity: 0.7,
+            weight: 0.5,
+            opacity: 0.5,
+            color: 'black',
+            dashArray: '0',
+            fillOpacity: 0.9,
             fillColor: getColor(result.defuzzifikasi)
         };
     }
@@ -105,10 +105,11 @@
 	    var layer = e.target;
 
 	    layer.setStyle({
-            weight: 5,
-            color: '#f00',
-            dashArray: '',
-            fillOpacity: 0.7
+            weight: 0,
+            opacity: 1,
+            color: 'white',
+            dashArray: '0',
+            fillOpacity: 1.5
 	    });
 
 	    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -119,12 +120,12 @@
 	function resetHighlight(e) {
 		var layer = e.target;
 		layer.setStyle({
-			weight: 2,
-			opacity: 1,
-			color: 'white',
-			dashArray: '3',
-			fillOpacity: 0.7,
-		})
+			  weight: 0.5,
+        opacity: 0.5,
+        color: 'black',
+        dashArray: '0',
+        fillOpacity: 0.9
+		});
 	}
 
   function onEachFeature(f, layer){
@@ -134,6 +135,36 @@
     });
     var kab_geojson= f.properties.KODE;
     data = dataRisiko[kab_geojson];
+    var popUp = '<table>' +
+                      '<tr>'+
+                        '<td colspan="4"><h6>'+f.properties.NAME_2+'</h6></td>'+
+                      '</tr>'+
+                      '<tr>'+
+                        '<td>Pelayanan Kesehatan Balita'+
+                        '<td>'+data.pelayanan_kesehatan+'%'+'</h6></td>'+
+                      '</tr>'+
+                      '<tr>'+
+                        '<td>Sanitasi Layak'+
+                        '<td>'+data.sanitasi+'%'+'</h6></td>'+
+                      '</tr>'+
+                      '<tr>'+
+                        '<td>Desa UCI(Universal Child Immunization)'+
+                        '<td>'+data.desa_uci+'%'+'</h6></td>'+
+                      '</tr>'+
+                      '<tr>'+
+                        '<td>Cakupan ASI Eksklusif'+
+                        '<td>'+data.asi+'%'+'</h6></td>'+
+                      '</tr>'+
+                      '<tr>'+
+                        '<td>Prevalensi Stunting'+
+                        '<td>'+data.stunting+'%'+'</h6></td>'+
+                      '</tr>'+
+                      '<tr>'+
+                        '<td>Tingkat Risiko'+
+                        '<td>'+data.tingkat_risiko+'</h6></td>'+
+                      '</tr>'+
+                '</table>';
+    layer.bindPopup(popUp);
     layer.bindTooltip(f.properties['NAME_2'],{
             permanent:true,
             direction:"center",

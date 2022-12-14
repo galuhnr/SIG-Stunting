@@ -12,7 +12,32 @@ import numpy as np
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS)
 cur = conn.cursor()
 
-exec(open("../python/prediksi_row.py").read())
+#perintah SQL
+#Pelayanan Kesehatan Balita
+cur.execute("SELECT pelayanan_kesehatan FROM moving_average WHERE tahun_id=6 order by kab_id asc;")
+dt_pelayanan = np.array(cur.fetchall())
+arr_pelayanan = np.round( [float(i) for i in dt_pelayanan], 1)
+
+#Sanita Layak
+cur.execute("SELECT sanitasi_layak FROM moving_average WHERE tahun_id=6 order by kab_id asc;")
+dt_sanitasi = np.array(cur.fetchall())
+arr_sanitasi = np.round( [float(i) for i in dt_sanitasi], 1)
+
+#Desa UCI
+cur.execute("SELECT desa_uci FROM moving_average WHERE tahun_id=6 order by kab_id asc;")
+dt_desa = np.array(cur.fetchall())
+arr_desa = np.round( [float(i) for i in dt_desa], 1)
+
+#ASI Eksklusif
+cur.execute("SELECT asi FROM moving_average WHERE tahun_id=6 order by kab_id asc;")
+dt_asi = np.array(cur.fetchall())
+arr_asi = np.round( [float(i) for i in dt_asi], 1)
+
+#Stunting
+cur.execute("SELECT stunting FROM moving_average WHERE tahun_id=6 order by kab_id asc;")
+dt_stunting = np.array(cur.fetchall())
+arr_stunting = np.round( [float(i) for i in dt_stunting], 1)
+
 exec(open("../python/inferensi_fuzzy.py").read())
 
 datas = []
@@ -28,7 +53,7 @@ for i in range(len(arr_pelayanan)):
   datas.append(deff)
 
 hasil = pd.DataFrame({'defuzzification':datas})
-# hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
+#hasil = pd.DataFrame({'pelayanan_kesehatan': arr_pelayanan,'sanitasi_jamban': arr_sanitasi,'desa_imunisasi': arr_desa,'asi_eksklusif':arr_asi,'stunting':arr_stunting,'defuzzification':datas})
 # print(hasil)
 
 for ind, row in hasil.iterrows():
@@ -40,9 +65,9 @@ cur.execute("SELECT tb_tahun.id_tahun, kabupaten_kota.id_kab from tb_tahun, kabu
 datakab = cur.fetchall()
 df_kab = pd.DataFrame(datakab, columns=["tahun_id", "kabkota_id"])
 
-#untuk id ditabel hasil
+# #untuk id ditabel hasil
 df_id = pd.DataFrame()
-df_id['id'] = np.arange(76, 76 + len(datakab)) + 1
+df_id['id'] = np.arange(114, 114 + len(datakab)) + 1
 
 data_new = pd.concat([df_id,df_kab,hasil], axis=1)
 #print(data_new)

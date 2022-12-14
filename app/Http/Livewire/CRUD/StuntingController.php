@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\desaUCI;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
+use App\Models\Stunting;
 
-class DesaController extends Component
+class StuntingController extends Component
 {
     use WithPagination;
-
-    protected $paginationTheme = 'bootstrap';
-
-    protected $listeners = ['delete'];
-
+    public $paginationTheme = 'bootstrap';
+    public $listeners = ['delete'];
     public $paging;
 
-    public $desa_id, $kabkota_id, $tahun_id, $jml_desa_uci;
+    public $stunting_id, $tahun_id, $kabkota_id, $jml_balita_diukur, $jml_balita_stunting, $persentase;
     public $updateMode = false;
 
     public function mount()
@@ -28,36 +25,41 @@ class DesaController extends Component
 
     public function render()
     {
-        $data = desaUCI::with('tb_tahun','kabupaten_kota')->orderBy('id_desa', 'asc')->paginate($this->paging);
+        $data = Stunting::with('tb_tahun', 'kabupaten_kota')->orderBy('id_stunting','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.desaUCI.index', compact('data', 'tahun', 'kab'));
+        return view('livewire.stunting.index', compact('data','tahun','kab'));
     }
 
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_desa_uci = '';
+        $this->jml_balita_diukur = '';
+        $this->jml_balita_stunting = '';
+        $this->persentase = '';
     }
 
     public function create()
     {
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.desaUCI.create', compact('tahun', 'kab'));
+        return view('livewire.stunting.create', compact('tahun', 'kab'));
     }
 
     public function store(){
         $this->validate([
-            'kabkota_id' => 'required',
             'tahun_id' => 'required',
-            'jml_desa_uci' => 'required',
+            'kabkota_id' => 'required',
+            'jml_balita_diukur' => 'required',
+            'jml_balita_stunting' => 'required',
         ]);
         
-        desaUCI::create([
-            'kabkota_id' => $this->kabkota_id,
+        Stunting::create([
             'tahun_id' => $this->tahun_id,
-            'jml_desa_uci' => $this->jml_desa_uci,
+            'kabkota_id' => $this->kabkota_id,
+            'jml_balita_diukur' => $this->jml_balita_diukur,
+            'jml_balita_stunting' => $this->jml_balita_stunting,
+            'persentase' => $this->persentase
         ]);
 
         $this->resetInputFields();
@@ -72,11 +74,13 @@ class DesaController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $data = desaUCI::where('id_desa', $id)->first();
-        $this->desa_id = $id;
+        $data = Stunting::where('id_stunting', $id)->first();
+        $this->stunting_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_desa_uci = $data->jml_desa_uci;
+        $this->jml_balita_diukur = $data->jml_balita_diukur;
+        $this->jml_balita_stunting = $data->jml_balita_stunting;
+        $this->persentase = $data->persentase;
     }
 
     public function update()
@@ -84,14 +88,17 @@ class DesaController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_desa_uci' => 'required',
+            'jml_balita_diukur' => 'required',
+            'jml_balita_stunting' => 'required',
         ]);
-        if ($this->desa_id) {
-            $desa = desaUCI::find($this->desa_id);
-            $desa->update([
+        if ($this->stunting_id) {
+            $asi = Stunting::find($this->stunting_id);
+            $asi->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_desa_uci' => $this->jml_desa_uci,
+                'jml_balita_diukur' => $this->jml_balita_diukur,
+                'jml_balita_stunting' => $this->jml_balita_stunting,
+                'persentase' => $this->persentase,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -121,7 +128,7 @@ class DesaController extends Component
 
     public function delete($id)
     {
-        desaUCI::where('id_desa', $id)->delete();
+        Stunting::where('id_stunting', $id)->delete();
     }
 
 }

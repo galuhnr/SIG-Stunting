@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\PelayananKesehatan;
+use App\Models\SanitasiJamban;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
 
-class PelayananKesehatanController extends Component
+class SanitasiController extends Component
 {
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     protected $listeners = ['delete'];
     public $paging;
 
-    public $pelayanan_id, $tahun_id, $kabkota_id, $jml_balita, $jml_balita_sehat;
+    public $sanitasi_id, $tahun_id, $kabkota_id, $jml_kk, $jml_akses_jamban;
     public $updateMode = false;
 
     public function mount()
@@ -25,39 +25,39 @@ class PelayananKesehatanController extends Component
 
     public function render()
     {
-        $data = PelayananKesehatan::with('tb_tahun', 'kabupaten_kota')->orderBy('id_pelayanan','asc')->paginate($this->paging);
+        $data = SanitasiJamban::with('tb_tahun', 'kabupaten_kota')->orderBy('id_sanitasi','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.pelayanan-kesehatan.index', compact('data','tahun','kab'));
+        return view('livewire.sanitasi-jamban.index', compact('data','tahun','kab'));
     }
 
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_balita = '';
-        $this->jml_balita_sehat = '';
+        $this->jml_kk = '';
+        $this->jml_akses_jamban = '';
     }
 
     public function create()
     {
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.pelayanan-kesehatan.create', compact('tahun', 'kab'));
+        return view('livewire.sanitasi-jamban.create', compact('tahun', 'kab'));
     }
 
     public function store(){
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_balita' => 'required',
-            'jml_balita_sehat' => 'required',
+            'jml_kk' => 'required',
+            'jml_akses_jamban' => 'required',
         ]);
         
-        PelayananKesehatan::create([
+        SanitasiJamban::create([
             'tahun_id' => $this->tahun_id,
             'kabkota_id' => $this->kabkota_id,
-            'jml_balita' => $this->jml_balita,
-            'jml_balita_sehat' => $this->jml_balita_sehat,
+            'jml_kk' => $this->jml_kk,
+            'jml_akses_jamban' => $this->jml_akses_jamban,
         ]);
 
         $this->resetInputFields();
@@ -72,12 +72,12 @@ class PelayananKesehatanController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $data = PelayananKesehatan::where('id_pelayanan', $id)->first();
-        $this->pelayanan_id = $id;
+        $data = SanitasiJamban::where('id_sanitasi', $id)->first();
+        $this->sanitasi_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_balita = $data->jml_balita;
-        $this->jml_balita_sehat = $data->jml_balita_sehat;
+        $this->jml_kk = $data->jml_kk;
+        $this->jml_akses_jamban = $data->jml_akses_jamban;
 
     }
 
@@ -86,16 +86,16 @@ class PelayananKesehatanController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_balita' => 'required',
-            'jml_balita_sehat' => 'required',
+            'jml_kk' => 'required',
+            'jml_akses_jamban' => 'required',
         ]);
-        if ($this->pelayanan_id) {
-            $pelayanan = PelayananKesehatan::find($this->pelayanan_id);
-            $pelayanan->update([
+        if ($this->sanitasi_id) {
+            $sanitasi = SanitasiJamban::find($this->sanitasi_id);
+            $sanitasi->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_balita' => $this->jml_balita,
-                'jml_balita_sehat' => $this->jml_balita_sehat,
+                'jml_kk' => $this->jml_kk,
+                'jml_akses_jamban' => $this->jml_akses_jamban,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -125,7 +125,7 @@ class PelayananKesehatanController extends Component
 
     public function delete($id)
     {
-        PelayananKesehatan::where('id_pelayanan', $id)->delete();
+        SanitasiJamban::where('id_sanitasi', $id)->delete();
     }
 
 }

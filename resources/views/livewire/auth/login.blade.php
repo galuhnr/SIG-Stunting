@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-4 col-lg-6 col-md-6 mt-4">
-                    <div class="card card-plain mt-6">
+                    <div class="card card-plain mt-5">
                         <div class="card-header pb-0 text-left bg-transparent">
                             <h3 class="font-weight-bolder text-info text-gradient">{{ __('Selamat Datang') }}</h3>
                             <p class="mb-0">{{ __('Pemetaan Tingkat Risiko Stunting')}}<br></p>

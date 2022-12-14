@@ -30,9 +30,10 @@
                 2020
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="{{ route('peta-prediksi2020') }}">2020</a></li>
-                <li><a class="dropdown-item" href="{{ route('peta-prediksi2021') }}">2021</a></li>
-                <li><a class="dropdown-item" href="{{ route('peta-prediksi2022') }}">2022</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2019') }}">2019</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2020') }}">2020</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2021') }}">2021</a></li>
+                <li><a class="dropdown-item" href="{{ route('prediksi2022') }}">2022</a></li>
               </ul>
             </div>
           </div>
@@ -54,7 +55,7 @@
 	});
   
   var map = L.map('map', {
-        center: [-7.54409437100132, 112.20990556692459],
+        center: [-7.714265268560922, 113.06819518545991],
         zoom: 8,
         layers: [peta]
   });
@@ -86,13 +87,12 @@
     function style(f) {
         var kodekab_json = f.properties.KODE;
         result = dataRisiko[kodekab_json];
-        console.log(result);
         return {
-            weight: 2,
-            opacity: 1,
-            color: 'white',
-            dashArray: '5',
-            fillOpacity: 0.7,
+            weight: 0.5,
+            opacity: 0.5,
+            color: 'black',
+            dashArray: '0',
+            fillOpacity: 0.9,
             fillColor: getColor(result.defuzzifikasi)
         };
     }
@@ -101,10 +101,11 @@
 	    var layer = e.target;
 
 	    layer.setStyle({
-            weight: 5,
-            color: '#f00',
-            dashArray: '',
-            fillOpacity: 0.7
+            weight: 0,
+            opacity: 1,
+            color: 'white',
+            dashArray: '0',
+            fillOpacity: 1.5
 	    });
 
 	    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -115,12 +116,12 @@
 	function resetHighlight(e) {
 		var layer = e.target;
 		layer.setStyle({
-			weight: 2,
-			opacity: 1,
-			color: 'white',
-			dashArray: '3',
-			fillOpacity: 0.7,
-		})
+			  weight: 0.5,
+        opacity: 0.5,
+        color: 'black',
+        dashArray: '0',
+        fillOpacity: 0.9
+		});
 	}
 
   function onEachFeature(f, layer){
@@ -152,7 +153,6 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
-
 
   function getData(){
     $.ajax({
