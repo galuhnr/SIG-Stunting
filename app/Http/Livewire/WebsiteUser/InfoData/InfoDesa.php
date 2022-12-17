@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\TingkatRisiko;
+namespace App\Http\Livewire\WebsiteUser\InfoData;
 
 use Livewire\Component;
+
 use Livewire\WithPagination;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
-use App\Models\Hasil;
+use App\Models\desaUCI;
 
-class TRController21 extends Component
+class InfoDesa extends Component
 {
     use WithPagination;
     public $paginationTheme = 'bootstrap';
@@ -20,11 +21,12 @@ class TRController21 extends Component
     }
 
     public function render()
-    {
-        $data = Hasil::where('tahun_id','5')->with('tb_tahun', 'kabupaten_kota')->orderBy('id_hasil','asc')->paginate($this->paging);
+    {   
+        $data = desaUCI::with('tb_tahun', 'kabupaten_kota')
+                ->orderBy('id_desa','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.tabel-tr.tr2021', compact('data','tahun','kab'));
+        return view('web-user.info-desa', compact('data','tahun','kab'))->layout('layouts.base');
+        
     }
-
 }

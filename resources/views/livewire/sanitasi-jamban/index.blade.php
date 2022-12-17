@@ -1,4 +1,5 @@
 <div style="overflow-x: hidden !important">
+    @include('layouts.navbars.nav')
     @include('livewire.sanitasi-jamban.create')
     @include('livewire.sanitasi-jamban.update')
     <div class="row">

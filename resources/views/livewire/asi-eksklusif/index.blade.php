@@ -1,4 +1,5 @@
 <div style="overflow-x: hidden !important">
+    @include('layouts.navbars.nav')
     @include('livewire.asi-eksklusif.create')
     @include('livewire.asi-eksklusif.update')
     <div class="row">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\CRUD;
+namespace App\Http\Livewire\Admin\CRUD;
 
 use Livewire\WithPagination;
 use App\Models\KabupatenKota;
@@ -14,7 +14,7 @@ class KabupatenController extends Component
 
     protected $listeners = ['delete'];
 
-    public $paging, $search, $kab_id, $nama_kabkota, $jml_desa;
+    public $paging, $kab_id, $nama_kabkota, $jml_desa;
     
     public $updateMode = false;
 

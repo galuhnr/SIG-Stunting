@@ -1,12 +1,31 @@
-<div style="overflow-x: hidden !important">
-@include('layouts.navbars.nav')
+
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 mx-4">
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
-                        <div>
-                            <h5 class="mb-0">{{ __('Hasil Tingkat Risiko Stunting Provinsi Jawa Timur 2017') }}</h5>
+                        <h5 >{{ __('Hasil Tingkat Risiko Stunting Provinsi Jawa Timur') }}</h5>
+                        <div class="dropdown">
+                            <button class="btn bg-gradient-primary btn-sm mb-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if(in_array(request()->route()->getName(),['info-tingkat-risiko2017']))    
+                                    2017
+                                @elseif(in_array(request()->route()->getName(),['info-tingkat-risiko2018']))   
+                                    2018
+                                @elseif(in_array(request()->route()->getName(),['info-tingkat-risiko2019']))   
+                                    2019
+                                @elseif(in_array(request()->route()->getName(),['info-tingkat-risiko2020']))   
+                                    2020
+                                @elseif(in_array(request()->route()->getName(),['info-tingkat-risiko2021']))   
+                                    2021
+                                @endif
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="{{route('info-tingkat-risiko2017')}}">2017</a></li>
+                                <li><a class="dropdown-item" href="{{route('info-tingkat-risiko2018')}}">2018</a></li>
+                                <li><a class="dropdown-item" href="{{route('info-tingkat-risiko2019')}}">2019</a></li>
+                                <li><a class="dropdown-item" href="{{route('info-tingkat-risiko2020')}}">2020</a></li>
+                                <li><a class="dropdown-item" href="{{route('info-tingkat-risiko2021')}}">2021</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -55,12 +74,16 @@
                             </tbody>
                         </table>
                         <input type="hidden" id="table_value" name="table_value">
-                        <div class="mt-3 ms-4 text-xs">
-                            {{ $data->links() }}
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="mt-3 ms-4 text-xs">
+                                {{ $data->links() }}
+                            </div>
+                            <div class="mt-3 ms-4 p-sumber">
+                                <p>{{ __('Sumber: Buku Profil Kesehatan Provinsi Jawa Timur') }}</p>
+                            </div>  
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

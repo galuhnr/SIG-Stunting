@@ -3,7 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute right-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{ route('home') }}">
+        <a class="navbar-brand m-0" href="{{ route('dashboard') }}">
             <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="...">
             <span class="ms-1 font-weight-bold">Website Admin</span>
         </a>
@@ -66,7 +66,7 @@
             </div>
 
             <li class="nav-item mt-2">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Tabel Data Kriteria</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Tabel Data Faktor</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'pelayanan-kesehatan-balita' ? 'active' : '' }}"
@@ -129,10 +129,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'tahun' ? 'active' : '' }}"
-                    href="{{ route('tahun') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'faskes' ? 'active' : '' }}"
+                    href="{{ route('faskes') }}">
                     <i style="font-size: 1rem;" class="fa-solid fa-circle-info text-center
-                        {{ in_array(request()->route()->getName(),['tahun']) ? 'text-danger' : 'text-dark' }}"></i>
+                        {{ in_array(request()->route()->getName(),['faskes']) ? 'text-danger' : 'text-dark' }}"></i>
                     <span class="nav-link-text ms-1">Informasi Faskes</span>
                 </a>
             </li>

@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\CRUD;
+namespace App\Http\Livewire\Admin\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\SanitasiJamban;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
+use App\Models\ASIEksklusif;
 
-class SanitasiController extends Component
+class ASIController extends Component
 {
     use WithPagination;
-    protected $paginationTheme = 'bootstrap';
-    protected $listeners = ['delete'];
+    public $paginationTheme = 'bootstrap';
+    public $listeners = ['delete'];
     public $paging;
 
-    public $sanitasi_id, $tahun_id, $kabkota_id, $jml_kk, $jml_akses_jamban;
+    public $asi_id, $tahun_id, $kabkota_id, $jml_bayi, $jml_diberi_asi;
     public $updateMode = false;
+
+    public $searchTerm;
 
     public function mount()
     {
@@ -25,39 +27,45 @@ class SanitasiController extends Component
 
     public function render()
     {
-        $data = SanitasiJamban::with('tb_tahun', 'kabupaten_kota')->orderBy('id_sanitasi','asc')->paginate($this->paging);
+        //$data = ASIEksklusif::with('tb_tahun', 'kabupaten_kota')->orderBy('id_asi','asc')->paginate($this->paging);
+        $data = ASIEksklusif::whereIn('kabkota_id',function(
+            $query){
+                $query->select('id_kab')
+                    ->from(with(new KabupatenKota)->getTable())->where('nama_kabkota','like', '%'.$this->searchTerm.'%');
+            })
+            ->orderBy('id_asi','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.sanitasi-jamban.index', compact('data','tahun','kab'));
+        return view('livewire.asi-eksklusif.index', compact('data','tahun','kab'));
     }
 
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_kk = '';
-        $this->jml_akses_jamban = '';
+        $this->jml_bayi = '';
+        $this->jml_diberi_asi = '';
     }
 
     public function create()
     {
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.sanitasi-jamban.create', compact('tahun', 'kab'));
+        return view('livewire.asi-eksklusif.create', compact('tahun', 'kab'));
     }
 
     public function store(){
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_kk' => 'required',
-            'jml_akses_jamban' => 'required',
+            'jml_bayi' => 'required',
+            'jml_diberi_asi' => 'required',
         ]);
         
-        SanitasiJamban::create([
+        ASIEksklusif::create([
             'tahun_id' => $this->tahun_id,
             'kabkota_id' => $this->kabkota_id,
-            'jml_kk' => $this->jml_kk,
-            'jml_akses_jamban' => $this->jml_akses_jamban,
+            'jml_bayi' => $this->jml_bayi,
+            'jml_diberi_asi' => $this->jml_diberi_asi,
         ]);
 
         $this->resetInputFields();
@@ -72,12 +80,12 @@ class SanitasiController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $data = SanitasiJamban::where('id_sanitasi', $id)->first();
-        $this->sanitasi_id = $id;
+        $data = ASIEksklusif::where('id_asi', $id)->first();
+        $this->asi_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_kk = $data->jml_kk;
-        $this->jml_akses_jamban = $data->jml_akses_jamban;
+        $this->jml_bayi = $data->jml_bayi;
+        $this->jml_diberi_asi = $data->jml_diberi_asi;
 
     }
 
@@ -86,16 +94,16 @@ class SanitasiController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_kk' => 'required',
-            'jml_akses_jamban' => 'required',
+            'jml_bayi' => 'required',
+            'jml_diberi_asi' => 'required',
         ]);
-        if ($this->sanitasi_id) {
-            $sanitasi = SanitasiJamban::find($this->sanitasi_id);
-            $sanitasi->update([
+        if ($this->asi_id) {
+            $asi = ASIEksklusif::find($this->asi_id);
+            $asi->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_kk' => $this->jml_kk,
-                'jml_akses_jamban' => $this->jml_akses_jamban,
+                'jml_bayi' => $this->jml_bayi,
+                'jml_diberi_asi' => $this->jml_diberi_asi,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -125,7 +133,7 @@ class SanitasiController extends Component
 
     public function delete($id)
     {
-        SanitasiJamban::where('id_sanitasi', $id)->delete();
+        ASIEksklusif::where('id_asi', $id)->delete();
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\TingkatRisiko;
+namespace App\Http\Livewire\Admin\TingkatRisiko;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -14,6 +14,8 @@ class TRController20 extends Component
     public $paginationTheme = 'bootstrap';
     public $paging;
 
+    public $searchTerm;
+
     public function mount()
     {
         $this->paging = 10;
@@ -21,7 +23,10 @@ class TRController20 extends Component
 
     public function render()
     {
-        $data = Hasil::where('tahun_id','4')->with('tb_tahun', 'kabupaten_kota')->orderBy('id_hasil','asc')->paginate($this->paging);
+        $data = Hasil::where('tahun_id','4')
+                ->where('tingkat_risiko','like', '%'.$this->searchTerm.'%')
+                ->orderBy('id_hasil','asc')
+                ->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
         return view('livewire.tabel-tr.tr2020', compact('data','tahun','kab'));

@@ -27,13 +27,63 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     @livewireStyles
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body class="g-sidenav-show bg-gray-100"> 
 
 {{-- If the admin is authenticated --}}
     @auth()
-        @if (in_array(request()->route()->getName(),['web-user', 'web-user'],))
+        @if (in_array(request()->route()->getName(),['dashboard'],))
+            @include('layouts.navbars.sidebar')
+            @include('layouts.navbars.nav')
+           
+            {{ $slot }}
+            <main>
+                <div class="container-fluid">
+                    <div class="row">
+                        @include('layouts.footer')
+                    </div>
+                </div>
+            </main>
+        @elseif(in_array(request()->route()->getName(),['peta2017', 'peta2018','peta2019','peta2020','peta2021'],))
+            @include('layouts.navbars.sidebar')
+            @include('layouts.navbars.nav')
+           
+            {{ $slot }}
+            <main>
+                <div class="container-fluid">
+                    <div class="row">
+                        @include('layouts.footer')
+                    </div>
+                </div>
+            </main>
+        @elseif(in_array(request()->route()->getName(),['prediksi2019', 'prediksi2020','prediksi2021','prediksi2022'],))
+            @include('layouts.navbars.sidebar')
+            @include('layouts.navbars.nav')
+           
+            {{ $slot }}
+            <main>
+                <div class="container-fluid">
+                    <div class="row">
+                        @include('layouts.footer')
+                    </div>
+                </div>
+            </main>
+        @elseif(in_array(request()->route()->getName(),['grafik-tingkatrisiko', 'grafik-pelayanan','grafik-sanitasi','grafik-desauci','grafik-asi','grafik-prevalensi-stunting'],))
+            @include('layouts.navbars.sidebar')
+            @include('layouts.navbars.nav')
+           
+            {{ $slot }}
+            <main>
+                <div class="container-fluid">
+                    <div class="row">
+                        @include('layouts.footer')
+                    </div>
+                </div>
+            </main>
+        @elseif(in_array(request()->route()->getName(),['kabupaten-kota','tahun', 'user-profile','faskes'],))
             @include('layouts.navbars.sidebar')
             @include('layouts.navbars.nav')
            
@@ -47,10 +97,9 @@
             </main>
         @else
             @include('layouts.navbars.sidebar')
-            @include('layouts.navbars.nav')
-           
-            {{ $slot }}
-            <main>
+            <main class="main-content mt-1 border-radius-lg">
+                
+                {{ $slot }}
                 <div class="container-fluid">
                     <div class="row">
                         @include('layouts.footer')
@@ -93,7 +142,7 @@
     <!-- Github buttons -->
     <!-- <script async defer src="https://buttons.github.io/buttons.js"></script> -->
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.2"></script>
+    <!-- <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.2"></script> -->
     
     @livewireScripts
     

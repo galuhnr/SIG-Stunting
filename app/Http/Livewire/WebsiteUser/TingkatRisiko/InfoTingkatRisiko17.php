@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\TingkatRisiko;
+namespace App\Http\Livewire\WebsiteUser\TingkatRisiko;
 
 use Livewire\Component;
+
 use Livewire\WithPagination;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
 use App\Models\Hasil;
 
-class TRController19 extends Component
+class InfoTingkatRisiko17 extends Component
 {
     use WithPagination;
     public $paginationTheme = 'bootstrap';
@@ -20,11 +21,14 @@ class TRController19 extends Component
     }
 
     public function render()
-    {
-        $data = Hasil::where('tahun_id','3')->with('tb_tahun', 'kabupaten_kota')->orderBy('id_hasil','asc')->paginate($this->paging);
+    {   
+
+        $data = Hasil::where('tahun_id','1')
+                ->orderBy('id_hasil','asc')
+                ->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.tabel-tr.tr2019', compact('data','tahun','kab'));
+        return view('web-user.info-tingkatrisiko', compact('data','tahun','kab'))->layout('layouts.base');
+        
     }
-
 }

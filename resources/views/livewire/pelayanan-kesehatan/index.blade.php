@@ -1,4 +1,6 @@
 <div style="overflow-x: hidden !important">
+
+    @include('layouts.navbars.nav')
     @include('livewire.pelayanan-kesehatan.create')
     @include('livewire.pelayanan-kesehatan.update')
     <div class="row">

@@ -1,4 +1,5 @@
 <div style="overflow-x: hidden !important">
+    @include('layouts.navbars.nav')
     @include('livewire.desaUCI.create')
     @include('livewire.desaUCI.update')
     <div class="row">

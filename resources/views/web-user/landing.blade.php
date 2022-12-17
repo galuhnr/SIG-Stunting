@@ -95,12 +95,12 @@
           <div class="col-8">
             <div class="row">
               <div class="col-6">
-                <div class="card card-profile card-plain" style="margin-left: 80px !important;"> 
+                <div class="cardd card-profilee card-plainn" style="margin-left: 80px !important;"> 
                   <div class="bunder">
                     <img src="../assets/img/icon/height.png" alt="">
                   </div>
-                  <div class="card-body text-left">
-                    <h4 class="card-title" style="color: #E5352B !important;">Tubuh Pendek</h4>
+                  <div class="card-bodyy text-left">
+                    <h4 class="card-titlee" style="color: #E5352B !important;">Tubuh Pendek</h4>
                     <p style="text-align: left; margin-top: 10px; line-height: 25px;">
                       Secara fisik, anak  stunting  terlihat lebih pendek dari teman sebayanya. 
                     </p>
@@ -108,12 +108,12 @@
                 </div>
               </div>
               <div class="col-6">
-                <div class="card card-profile card-plain ml-2"> 
+                <div class="cardd card-profilee card-plainn ml-2"> 
                   <div class="bunder">
                     <img src="../assets/img/icon/neuron.png" alt="">
                   </div>
-                  <div class="card-body text-left">
-                    <h4 class="card-title" style="color: #E5352B !important;">Perkembangan Terlambat</h4>
+                  <div class="card-bodyy text-left">
+                    <h4 class="card-titlee" style="color: #E5352B !important;">Perkembangan Terlambat</h4>
                     <p style="text-align: left; margin-top: 10px; line-height: 25px;">
                       Pertumbuhan gigi terlambat, wajah tampak lebih muda, anak jarang malakukan kontak mata dan lebih pendiam.
                     </p>
@@ -123,12 +123,12 @@
             </div>
             <div class="row">
               <div class="col-6" style="margin-top: -30px !important;">
-                <div class="card card-profile card-plain" style="margin-left: 80px !important;"> 
+                <div class="cardd card-profilee card-plainn" style="margin-left: 80px !important;"> 
                   <div class="bunder">
                     <img src="../assets/img/icon/sakit.png" alt="">
                   </div>
-                  <div class="card-body text-left">
-                    <h4 class="card-title" style="color: #E5352B !important; line-height: 35px;">Mudah Terserang Penyakit</h4>
+                  <div class="card-bodyy text-left">
+                    <h4 class="card-titlee" style="color: #E5352B !important; line-height: 35px; margin-right: 20px;">Mudah Terserang Penyakit</h4>
                     <p style="text-align: left; margin-top: 10px; line-height: 25px;">
                       Anak stunting lebih beresiko terserang penyakit infeksi akibat kurangnya nutrisi sehingga kekebalan tubuh menurun.
                     </p>
@@ -136,12 +136,12 @@
                 </div>
               </div>
               <div class="col-6" style="margin-top: -30px !important;">
-                <div class="card card-profile card-plain" style="margin-right: 80px !important;"> 
+                <div class="cardd card-profilee card-plainn" style="margin-right: 80px !important;"> 
                   <div class="bunder">
                     <img src="../assets/img/icon/kognitif.png" alt="">
                   </div>
-                  <div class="card-body text-left">
-                    <h4 class="card-title" style="color: #E5352B !important; line-height: 35px;">Penurunan Kemampuan Kognitif</h4>
+                  <div class="card-bodyy text-left">
+                    <h4 class="card-titlee" style="color: #E5352B !important; line-height: 35px;">Penurunan Kemampuan Kognitif</h4>
                     <p style="text-align: left; margin-top: 10px; line-height: 25px;">
                       Kemampuan kognitif anak menurun yang ditandai dengan IQ rendah bahkan hingga dapat dikategorikan disabilitas intelektual.
                     </p>

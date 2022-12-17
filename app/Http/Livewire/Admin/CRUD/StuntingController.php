@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\CRUD;
+namespace App\Http\Livewire\Admin\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,6 +18,8 @@ class StuntingController extends Component
     public $stunting_id, $tahun_id, $kabkota_id, $jml_balita_diukur, $jml_balita_stunting, $persentase;
     public $updateMode = false;
 
+    public $searchTerm;
+
     public function mount()
     {
         $this->paging = 10;
@@ -25,7 +27,13 @@ class StuntingController extends Component
 
     public function render()
     {
-        $data = Stunting::with('tb_tahun', 'kabupaten_kota')->orderBy('id_stunting','asc')->paginate($this->paging);
+        //$data = Stunting::with('tb_tahun', 'kabupaten_kota')->orderBy('id_stunting','asc')->paginate($this->paging);
+        $data = Stunting::whereIn('kabkota_id',function(
+            $query){
+                $query->select('id_kab')
+                    ->from(with(new KabupatenKota)->getTable())->where('nama_kabkota','like', '%'.$this->searchTerm.'%');
+            })
+            ->orderBy('id_stunting','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
         return view('livewire.stunting.index', compact('data','tahun','kab'));

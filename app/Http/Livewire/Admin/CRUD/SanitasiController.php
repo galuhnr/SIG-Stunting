@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Livewire\CRUD;
+namespace App\Http\Livewire\Admin\CRUD;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\desaUCI;
+use App\Models\SanitasiJamban;
 use App\Models\KabupatenKota;
 use App\Models\Tahun;
 
-class DesaController extends Component
+class SanitasiController extends Component
 {
     use WithPagination;
-
     protected $paginationTheme = 'bootstrap';
-
     protected $listeners = ['delete'];
-
     public $paging;
-
-    public $desa_id, $kabkota_id, $tahun_id, $jml_desa_uci;
+    public $searchTerm;
+    public $sanitasi_id, $tahun_id, $kabkota_id, $jml_kk, $jml_akses_jamban;
     public $updateMode = false;
 
     public function mount()
@@ -28,36 +25,45 @@ class DesaController extends Component
 
     public function render()
     {
-        $data = desaUCI::with('tb_tahun','kabupaten_kota')->orderBy('id_desa', 'asc')->paginate($this->paging);
+        //$data = SanitasiJamban::with('tb_tahun', 'kabupaten_kota')->orderBy('id_sanitasi','asc')->paginate($this->paging);
+        $data = SanitasiJamban::whereIn('kabkota_id',function(
+            $query){
+                $query->select('id_kab')
+                    ->from(with(new KabupatenKota)->getTable())->where('nama_kabkota','like', '%'.$this->searchTerm.'%');
+            })
+            ->orderBy('id_sanitasi','asc')->paginate($this->paging);
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.desaUCI.index', compact('data', 'tahun', 'kab'));
+        return view('livewire.sanitasi-jamban.index', compact('data','tahun','kab'));
     }
 
     private function resetInputFields(){
         $this->tahun_id = '';
         $this->kabkota_id = '';
-        $this->jml_desa_uci = '';
+        $this->jml_kk = '';
+        $this->jml_akses_jamban = '';
     }
 
     public function create()
     {
         $tahun = Tahun::all();
         $kab = KabupatenKota::all();
-        return view('livewire.desaUCI.create', compact('tahun', 'kab'));
+        return view('livewire.sanitasi-jamban.create', compact('tahun', 'kab'));
     }
 
     public function store(){
         $this->validate([
-            'kabkota_id' => 'required',
             'tahun_id' => 'required',
-            'jml_desa_uci' => 'required',
+            'kabkota_id' => 'required',
+            'jml_kk' => 'required',
+            'jml_akses_jamban' => 'required',
         ]);
         
-        desaUCI::create([
-            'kabkota_id' => $this->kabkota_id,
+        SanitasiJamban::create([
             'tahun_id' => $this->tahun_id,
-            'jml_desa_uci' => $this->jml_desa_uci,
+            'kabkota_id' => $this->kabkota_id,
+            'jml_kk' => $this->jml_kk,
+            'jml_akses_jamban' => $this->jml_akses_jamban,
         ]);
 
         $this->resetInputFields();
@@ -72,11 +78,13 @@ class DesaController extends Component
     public function edit($id)
     {
         $this->updateMode = true;
-        $data = desaUCI::where('id_desa', $id)->first();
-        $this->desa_id = $id;
+        $data = SanitasiJamban::where('id_sanitasi', $id)->first();
+        $this->sanitasi_id = $id;
         $this->tahun_id = $data->tahun_id;
         $this->kabkota_id = $data->kabkota_id;
-        $this->jml_desa_uci = $data->jml_desa_uci;
+        $this->jml_kk = $data->jml_kk;
+        $this->jml_akses_jamban = $data->jml_akses_jamban;
+
     }
 
     public function update()
@@ -84,14 +92,16 @@ class DesaController extends Component
         $this->validate([
             'tahun_id' => 'required',
             'kabkota_id' => 'required',
-            'jml_desa_uci' => 'required',
+            'jml_kk' => 'required',
+            'jml_akses_jamban' => 'required',
         ]);
-        if ($this->desa_id) {
-            $desa = desaUCI::find($this->desa_id);
-            $desa->update([
+        if ($this->sanitasi_id) {
+            $sanitasi = SanitasiJamban::find($this->sanitasi_id);
+            $sanitasi->update([
                 'tahun_id' => $this->tahun_id,
                 'kabkota_id' => $this->kabkota_id,
-                'jml_desa_uci' => $this->jml_desa_uci,
+                'jml_kk' => $this->jml_kk,
+                'jml_akses_jamban' => $this->jml_akses_jamban,
             ]);
             $this->updateMode = false;
             $this->resetInputFields();
@@ -121,7 +131,7 @@ class DesaController extends Component
 
     public function delete($id)
     {
-        desaUCI::where('id_desa', $id)->delete();
+        SanitasiJamban::where('id_sanitasi', $id)->delete();
     }
 
 }

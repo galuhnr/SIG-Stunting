@@ -1,3 +1,4 @@
+@include('layouts.navbars.nav')
 <div style="overflow-x: hidden !important">
     <div class="row">
         <div class="col-12">

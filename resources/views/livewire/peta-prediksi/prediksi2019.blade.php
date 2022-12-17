@@ -29,12 +29,21 @@
               <button class="btn bg-gradient-primary btn-sm mb-2 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 2019
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="{{ route('prediksi2019') }}">2019</a></li>
-                <li><a class="dropdown-item" href="{{ route('prediksi2020') }}">2020</a></li>
-                <li><a class="dropdown-item" href="{{ route('prediksi2021') }}">2021</a></li>
-                <li><a class="dropdown-item" href="{{ route('prediksi2022') }}">2022</a></li>
-              </ul>
+              @if(auth()->user())
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="{{ route('prediksi2019') }}">2019</a></li>
+                  <li><a class="dropdown-item" href="{{ route('prediksi2020') }}">2020</a></li>
+                  <li><a class="dropdown-item" href="{{ route('prediksi2021') }}">2021</a></li>
+                  <li><a class="dropdown-item" href="{{ route('prediksi2022') }}">2022</a></li>
+                </ul>
+              @else
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li><a class="dropdown-item" href="{{ route('peta-prediksi2019') }}">2019</a></li>
+                  <li><a class="dropdown-item" href="{{ route('peta-prediksi2020') }}">2020</a></li>
+                  <li><a class="dropdown-item" href="{{ route('peta-prediksi2021') }}">2021</a></li>
+                  <li><a class="dropdown-item" href="{{ route('peta-prediksi2022') }}">2022</a></li>
+                </ul>
+              @endif
             </div>
           </div>
         </div>
@@ -51,7 +60,7 @@
 		  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	  	id: 'mapbox/streets-v11'
+	  	id: 'mapbox/outdoors-v12'
 	});
   
   var map = L.map('map', {
